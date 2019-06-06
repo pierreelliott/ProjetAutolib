@@ -571,10 +571,7 @@
     </socket-binding-group>
     <deployments>
         <deployment name="AppClientInscription_war_exploded" runtime-name="AppClientInscription_war_exploded.war">
-            <fs-exploded path="D:\Pierre-Elliott\Documents\Projets\Etudes\Polytech\InfoRep\AppClientInscription\out\artifacts\AppClientInscription_war_exploded"/>
+            <!--<fs-exploded path="D:\epul\progrrepartie\annee2019\Chapitre 8\tp\AppClientInscription\out\artifacts\AppClientInscription_war_exploded"/>-->
         </deployment>
-		<deployment name="autolib_war_exploded" runtime-name="autolib_war_exploded.war">
-			<fs-exploded path="D:\Pierre-Elliott\Documents\Projets\Etudes\Polytech\InfoRep\ProjetAutoLib\ModuleReservation\target\AutolibReservation"/>
-		</deployment>
     </deployments>
 </server>

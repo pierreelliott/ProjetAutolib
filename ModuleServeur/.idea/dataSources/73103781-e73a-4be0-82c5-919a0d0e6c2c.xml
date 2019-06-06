@@ -999,7 +999,7 @@
       <ColNames>station</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>station</RefTableName>
-      <RefColNames>id</RefColNames>
+      <RefColNames>idStation</RefColNames>
     </foreign-key>
     <foreign-key id="250" parent="235" name="fk_Borne_Vehicule1">
       <ColNames>idVehicule</ColNames>
@@ -1031,271 +1031,260 @@
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="236" name="login">
-      <Position>5</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="256" parent="236" name="password">
-      <Position>6</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="257" parent="236" name="PRIMARY">
+    <key id="255" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idClient</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="258" parent="237" name="vehicule">
+    <column id="256" parent="237" name="vehicule">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="237" name="client">
+    <column id="257" parent="237" name="client">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="237" name="date_reservation">
+    <column id="258" parent="237" name="date_reservation">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="237" name="date_echeance">
+    <column id="259" parent="237" name="date_echeance">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="262" parent="237" name="fk_Reservation_Vehicule1_idx">
+    <index id="260" parent="237" name="fk_Reservation_Vehicule1_idx">
       <ColNames>vehicule</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="263" parent="237" name="fk_Reservation_Client1_idx">
+    <index id="261" parent="237" name="fk_Reservation_Client1_idx">
       <ColNames>client</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="264" parent="237" name="PRIMARY">
+    <key id="262" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>vehicule
 client
 date_reservation</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="265" parent="237" name="fk_Reservation_Vehicule1">
+    <foreign-key id="263" parent="237" name="fk_Reservation_Vehicule1">
       <ColNames>vehicule</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>vehicule</RefTableName>
       <RefColNames>idVehicule</RefColNames>
     </foreign-key>
-    <foreign-key id="266" parent="237" name="fk_Reservation_Client1">
+    <foreign-key id="264" parent="237" name="fk_Reservation_Client1">
       <ColNames>client</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>client</RefTableName>
       <RefColNames>idClient</RefColNames>
     </foreign-key>
-    <column id="267" parent="238" name="id">
+    <column id="265" parent="238" name="idStation">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="238" name="latitude">
+    <column id="266" parent="238" name="latitude">
       <Position>2</Position>
       <DataType>decimal(9,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="238" name="longitude">
+    <column id="267" parent="238" name="longitude">
       <Position>3</Position>
       <DataType>decimal(9,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="238" name="adresse">
+    <column id="268" parent="238" name="adresse">
       <Position>4</Position>
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="238" name="numero">
+    <column id="269" parent="238" name="numero">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="238" name="ville">
+    <column id="270" parent="238" name="ville">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="238" name="code_postal">
+    <column id="271" parent="238" name="code_postal">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="274" parent="238" name="PRIMARY">
+    <key id="272" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>idStation</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="275" parent="239" name="idType_vehicule">
+    <column id="273" parent="239" name="idType_vehicule">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="239" name="categorie">
+    <column id="274" parent="239" name="categorie">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="239" name="type_vehicule">
+    <column id="275" parent="239" name="type_vehicule">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="278" parent="239" name="PRIMARY">
+    <key id="276" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idType_vehicule</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="279" parent="240" name="Vehicule">
+    <column id="277" parent="240" name="Vehicule">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="240" name="Client">
+    <column id="278" parent="240" name="Client">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="240" name="date">
+    <column id="279" parent="240" name="date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="240" name="borne_depart">
+    <column id="280" parent="240" name="borne_depart">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="240" name="borne_arrivee">
+    <column id="281" parent="240" name="borne_arrivee">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="284" parent="240" name="fk_table1_Client1_idx">
+    <index id="282" parent="240" name="fk_table1_Client1_idx">
       <ColNames>Client</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="285" parent="240" name="fk_utilise_Borne1_idx">
+    <index id="283" parent="240" name="fk_utilise_Borne1_idx">
       <ColNames>borne_depart</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="286" parent="240" name="fk_utilise_Borne2_idx">
+    <index id="284" parent="240" name="fk_utilise_Borne2_idx">
       <ColNames>borne_arrivee</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="287" parent="240" name="PRIMARY">
+    <key id="285" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Vehicule
 Client
 date</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="240" name="fk_table1_Vehicule1">
+    <foreign-key id="286" parent="240" name="fk_table1_Vehicule1">
       <ColNames>Vehicule</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>vehicule</RefTableName>
       <RefColNames>idVehicule</RefColNames>
     </foreign-key>
-    <foreign-key id="289" parent="240" name="fk_table1_Client1">
+    <foreign-key id="287" parent="240" name="fk_table1_Client1">
       <ColNames>Client</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>client</RefTableName>
       <RefColNames>idClient</RefColNames>
     </foreign-key>
-    <foreign-key id="290" parent="240" name="fk_utilise_Borne1">
+    <foreign-key id="288" parent="240" name="fk_utilise_Borne1">
       <ColNames>borne_depart</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>borne</RefTableName>
       <RefColNames>idBorne</RefColNames>
     </foreign-key>
-    <foreign-key id="291" parent="240" name="fk_utilise_Borne2">
+    <foreign-key id="289" parent="240" name="fk_utilise_Borne2">
       <ColNames>borne_arrivee</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>borne</RefTableName>
       <RefColNames>idBorne</RefColNames>
     </foreign-key>
-    <column id="292" parent="241" name="idVehicule">
+    <column id="290" parent="241" name="idVehicule">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="241" name="RFID">
+    <column id="291" parent="241" name="RFID">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="241" name="etatBatterie">
+    <column id="292" parent="241" name="etatBatterie">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="241" name="Disponibilite">
+    <column id="293" parent="241" name="Disponibilite">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="296" parent="241" name="latitude">
+    <column id="294" parent="241" name="latitude">
       <Position>5</Position>
       <DataType>decimal(9,6 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="297" parent="241" name="longitude">
+    <column id="295" parent="241" name="longitude">
       <Position>6</Position>
       <DataType>decimal(9,6 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="241" name="type_vehicule">
+    <column id="296" parent="241" name="type_vehicule">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="299" parent="241" name="RFID_UNIQUE">
+    <index id="297" parent="241" name="RFID_UNIQUE">
       <ColNames>RFID</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="300" parent="241" name="fk_Vehicule_Type_vehicule1_idx">
+    <index id="298" parent="241" name="fk_Vehicule_Type_vehicule1_idx">
       <ColNames>type_vehicule</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="301" parent="241" name="PRIMARY">
+    <key id="299" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idVehicule</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="302" parent="241" name="RFID_UNIQUE">
+    <key id="300" parent="241" name="RFID_UNIQUE">
       <ColNames>RFID</ColNames>
       <UnderlyingIndexName>RFID_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="303" parent="241" name="fk_Vehicule_Type_vehicule1">
+    <foreign-key id="301" parent="241" name="fk_Vehicule_Type_vehicule1">
       <ColNames>type_vehicule</ColNames>
       <RefSchemaName>autolib</RefSchemaName>
       <RefTableName>type_vehicule</RefTableName>

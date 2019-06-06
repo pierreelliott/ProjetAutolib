@@ -6,14 +6,14 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "utilise", schema = "autolib", catalog = "")
-@IdClass(UtilisePK.class)
-public class Utilise {
+@IdClass(UtiliseEntityPK.class)
+public class UtiliseEntity {
     private int vehicule;
-//    private int client;
+    private int client;
     private Timestamp date;
-    private Client client;
-    private Borne borneDepart;
-    private Borne borneArrivee;
+    private ClientEntity clientByClient;
+    private BorneEntity borneByBorneDepart;
+    private BorneEntity borneByBorneArrivee;
 
     @Id
     @Column(name = "Vehicule")
@@ -25,15 +25,15 @@ public class Utilise {
         this.vehicule = vehicule;
     }
 
-//    @Id
-//    @Column(name = "Client")
-//    public int getIdClient() {
-//        return client;
-//    }
-//
-//    public void setIdClient(int client) {
-//        this.client = client;
-//    }
+    @Id
+    @Column(name = "Client")
+    public int getClient() {
+        return client;
+    }
+
+    public void setClient(int client) {
+        this.client = client;
+    }
 
     @Id
     @Column(name = "date")
@@ -49,9 +49,9 @@ public class Utilise {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Utilise that = (Utilise) o;
+        UtiliseEntity that = (UtiliseEntity) o;
         return vehicule == that.vehicule &&
-//                client == that.client &&
+                client == that.client &&
                 Objects.equals(date, that.date);
     }
 
@@ -62,31 +62,31 @@ public class Utilise {
 
     @ManyToOne
     @JoinColumn(name = "Client", referencedColumnName = "idClient", nullable = false)
-    public Client getClient() {
-        return client;
+    public ClientEntity getClientByClient() {
+        return clientByClient;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientByClient(ClientEntity clientByClient) {
+        this.clientByClient = clientByClient;
     }
 
     @ManyToOne
     @JoinColumn(name = "borne_depart", referencedColumnName = "idBorne", nullable = false)
-    public Borne getBorneDepart() {
-        return borneDepart;
+    public BorneEntity getBorneByBorneDepart() {
+        return borneByBorneDepart;
     }
 
-    public void setBorneDepart(Borne borneDepart) {
-        this.borneDepart = borneDepart;
+    public void setBorneByBorneDepart(BorneEntity borneByBorneDepart) {
+        this.borneByBorneDepart = borneByBorneDepart;
     }
 
     @ManyToOne
     @JoinColumn(name = "borne_arrivee", referencedColumnName = "idBorne")
-    public Borne getBorneArrivee() {
-        return borneArrivee;
+    public BorneEntity getBorneByBorneArrivee() {
+        return borneByBorneArrivee;
     }
 
-    public void setBorneArrivee(Borne borneArrivee) {
-        this.borneArrivee = borneArrivee;
+    public void setBorneByBorneArrivee(BorneEntity borneByBorneArrivee) {
+        this.borneByBorneArrivee = borneByBorneArrivee;
     }
 }

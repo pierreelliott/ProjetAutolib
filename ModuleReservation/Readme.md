@@ -1,4 +1,4 @@
-# Autolib' - Module idClient
+# Autolib' - Module client
 
 J'ai importé le projet oeuvre pour faire l'appli cliente, donc c'est normal s'il 
 reste du code mort. C'est soit pour garder des exemples directement sous la main, 

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "type_vehicule", schema = "autolib", catalog = "")
-public class TypeVehicule {
+public class TypeVehiculeEntity {
     private int idTypeVehicule;
     private String categorie;
     private String typeVehicule;
@@ -44,7 +44,7 @@ public class TypeVehicule {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TypeVehicule that = (TypeVehicule) o;
+        TypeVehiculeEntity that = (TypeVehiculeEntity) o;
         return idTypeVehicule == that.idTypeVehicule &&
                 Objects.equals(categorie, that.categorie) &&
                 Objects.equals(typeVehicule, that.typeVehicule);

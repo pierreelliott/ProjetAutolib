@@ -2,58 +2,18 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ReservationTopic" />
+      <artifact name="InscriptionTopic" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e6c6e4-87b2-4624-a480-4c45b51e2531" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/repositories/ClientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/service/ReservationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/utilitaires/SessionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dto/ReservationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/stations/afficher.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ModuleReservation/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Utilise.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Utilise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/DefaultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/repositories/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/repositories/ReservationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/utilitaires/Vues.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/utilitaires/Vues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Borne.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Borne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/stations/liste.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/stations/liste.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/vehicules/liste.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/vehicules/liste.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/73103781-e73a-4be0-82c5-919a0d0e6c2c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/73103781-e73a-4be0-82c5-919a0d0e6c2c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InscriptionTopic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/InscriptionTopic.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ejb/DemandeReservationTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ejb/DemandeReservationTopic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/BorneEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/Borne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/ClientEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/Inscription.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/InscriptionEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/ReservationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/ReservationEntityPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/ReservationPK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/StationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/TypeVehiculeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/TypeVehicule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/UtiliseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/Utilise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/UtiliseEntityPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/UtilisePK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/metier/VehiculeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/metier/Vehicule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/EnregistreReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EnregistreReservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ejb/DemandeReservationTopic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ejb/DemandeReservationTopic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/BorneEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/ClientEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/Inscription.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/InscriptionEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/Reservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/metier/Reservation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/ReservationEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/ReservationEntityPK.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/StationEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/TypeVehiculeEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/UtiliseEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/UtiliseEntityPK.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/metier/VehiculeEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/EnregistreReservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/EnregistreReservation.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -92,28 +52,28 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="22" />
-          <entry key="java" value="307" />
+          <entry key="java" value="299" />
           <entry key="txt" value="7" />
-          <entry key="xml" value="21" />
+          <entry key="xml" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="307" />
+          <entry key="JAVA" value="299" />
           <entry key="PLAIN_TEXT" value="29" />
-          <entry key="XML" value="21" />
+          <entry key="XML" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="26" />
-          <entry key="xml" value="5" />
+          <entry key="java" value="6" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="26" />
-          <entry key="XML" value="5" />
+          <entry key="JAVA" value="6" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -121,44 +81,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/metier/Vehicule.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/metier/Client.java">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-808">
+              <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ejb/DemandeReservationTopic.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="63" column="73" lean-forward="true" selection-start-line="63" selection-start-column="73" selection-end-line="63" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hibernate.cfg.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/EnregistreReservation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="433">
+              <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -166,20 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/metier/Reservation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+            <state relative-caret-position="408">
+              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -194,11 +117,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>Entity</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -215,13 +133,10 @@
         <option value="$PROJECT_DIR$/src/main/java/ejb/JBossContext.java" />
         <option value="$PROJECT_DIR$/InscriptionTopic.iml" />
         <option value="$PROJECT_DIR$/src/main/java/ejb/DemandeInscriptionTopic.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/metier/Borne.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dto/ReservationDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/metier/Reservation.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/EnregistreReservation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/metier/Reservation.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ejb/DemandeReservationTopic.java" />
       </list>
     </option>
@@ -232,22 +147,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="ReservationTopic" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="y" value="2" />
-    <option name="width" value="1700" />
-    <option name="height" value="1045" />
+    <option name="x" value="14" />
+    <option name="y" value="38" />
+    <option name="width" value="1678" />
+    <option name="height" value="1008" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -281,14 +185,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ModuleServeur" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ModuleServeur" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ModuleServeur" type="b2602c69:ProjectViewProjectNode" />
@@ -348,7 +244,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="73103781-e73a-4be0-82c5-919a0d0e6c2c" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559856645662" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559836060962" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ModuleReservation" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -365,8 +261,6 @@
       <recent name="metier" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Pierre-Elliott\Documents\Projets\Etudes\Polytech\InfoRep\ProjetAutoLib\ModuleServeur\src\main\java" />
-      <recent name="D:\Pierre-Elliott\Documents\Projets\Etudes\Polytech\InfoRep\ProjetAutoLib\ModuleServeur\src\main\java\metier" />
       <recent name="D:\epul\progrrepartie\annee2018\intellij\InscriptionTopic\src\main\resources" />
       <recent name="D:\epul\progrrepartie\annee2018\intellij\InscriptionTopic\src\main\java" />
       <recent name="D:\epul\progrrepartie\annee2018\intellij\InscriptionTopic\src\main\java\metier" />
@@ -515,17 +409,18 @@
       <workItem from="1553547146610" duration="718000" />
       <workItem from="1554317900855" duration="1131000" />
       <workItem from="1557502602466" duration="174000" />
-      <workItem from="1559811401236" duration="7363000" />
+      <workItem from="1559811401236" duration="4637000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37074000" />
+    <option name="totallyTimeSpent" value="34348000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7804054" visible="true" weight="0.25977996" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7804054" visible="true" weight="0.25977996" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Persistence" order="2" sideWeight="0.2195946" side_tool="true" weight="0.25914633" />
       <window_info id="Designer" order="3" />
@@ -535,15 +430,15 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33716917" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.6248562" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32911393" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32995495" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.18872267" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.18897638" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
@@ -553,7 +448,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.3294621" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -568,18 +463,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ejb/DemandeReservationTopic.java</url>
-          <line>50</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/metier.java" />
@@ -628,105 +511,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/ReservationEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/Vehicule.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/ReservationPK.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/TypeVehicule.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/Station.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/Utilise.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/UtilisePK.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/Borne.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dto/ReservationDTOOld.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dto/ReservationDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/Client.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/metier/Reservation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="36" lean-forward="true" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/EnregistreReservation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+        <state relative-caret-position="238">
+          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-808">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/metier/Reservation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ejb/DemandeReservationTopic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="63" column="73" lean-forward="true" selection-start-line="63" selection-start-column="73" selection-end-line="63" selection-end-column="73" />
+        <state relative-caret-position="340">
+          <caret line="44" column="107" selection-start-line="44" selection-start-column="107" selection-end-line="44" selection-end-column="107" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
         </state>
       </provider>
     </entry>
