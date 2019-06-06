@@ -51,24 +51,24 @@
 									</div>
 							</div>
 						</li>--%>
-						<c:if test="${sessionScope.id == null }">
-							<li class="nav-item ml-auto">
-								<a class="nav-link" href="<c:url value="/inscription"/>">S'inscrire</a>
-							</li>
-							<li class="nav-item ml-auto">
-								<a class="nav-link" href="<c:url value="/login"/>">Se Connecter</a>
-							</li>
-						</c:if>
-
-						<c:if test="${sessionScope.id > 0 }">
-							<li class="nav-item">
-								<a class="nav-link" href="<c:url value="/logout"/>">Déconnexion</a>
-							</li>
-						</c:if>
 					</ul>
-					<span class="navbar-text">
-						Gestion de l'exposition 2019
-					</span>
+
+						<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+							<c:if test="${sessionScope.id == null }">
+								<li class="nav-item ml-auto">
+									<a class="nav-link" href="<c:url value="/login"/>">Connexion</a>
+								</li>
+								<li class="nav-item ml-auto">
+									<a class="nav-link" href="<c:url value="/inscription"/>">Inscription</a>
+								</li>
+							</c:if>
+							<c:if test="${sessionScope.id > 0 }">
+								<li class="nav-item">
+									<a class="nav-link" href="<c:url value="/logout"/>">Déconnexion</a>
+								</li>
+							</c:if>
+						</ul>
+
 				</div>
 			</nav>
 

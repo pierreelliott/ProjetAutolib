@@ -7,23 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e6c6e4-87b2-4624-a480-4c45b51e2531" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTOOld.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/utilitaires/EtatVehiculeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/BorneEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Borne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ClientEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ReservationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ReservationEntityPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ReservationPK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/StationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/TypeVehiculeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/TypeVehicule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/UtiliseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Utilise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/UtiliseEntityPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/UtilisePK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/VehiculeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Vehicule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/domains/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/domains/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/StationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/repositories/StationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/AuthentificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/AuthentificationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/tags/layout.tag" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/tags/layout.tag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/reservations/formReservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/reservations/formReservation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -279,7 +267,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="73103781-e73a-4be0-82c5-919a0d0e6c2c" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559815976738" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559818260628" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ModuleReservation" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />

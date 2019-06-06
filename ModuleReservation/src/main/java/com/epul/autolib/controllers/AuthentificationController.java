@@ -83,4 +83,9 @@ public class AuthentificationController {
         return new Layout(destinationPage);
     }
 
+    @RequestMapping("/inscription")
+    public ModelAndView inscription(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return new Layout(Vues.Erreur.E404);
+    }
+
 }
