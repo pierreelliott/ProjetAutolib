@@ -6,12 +6,12 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class ReservationEntityPK implements Serializable {
+public class UtilisePK implements Serializable {
     private int vehicule;
     private int client;
-    private Timestamp dateReservation;
+    private Timestamp date;
 
-    @Column(name = "vehicule")
+    @Column(name = "Vehicule")
     @Id
     public int getVehicule() {
         return vehicule;
@@ -21,7 +21,7 @@ public class ReservationEntityPK implements Serializable {
         this.vehicule = vehicule;
     }
 
-    @Column(name = "client")
+    @Column(name = "Client")
     @Id
     public int getClient() {
         return client;
@@ -31,28 +31,28 @@ public class ReservationEntityPK implements Serializable {
         this.client = client;
     }
 
-    @Column(name = "date_reservation")
+    @Column(name = "date")
     @Id
-    public Timestamp getDateReservation() {
-        return dateReservation;
+    public Timestamp getDate() {
+        return date;
     }
 
-    public void setDateReservation(Timestamp dateReservation) {
-        this.dateReservation = dateReservation;
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReservationEntityPK that = (ReservationEntityPK) o;
+        UtilisePK that = (UtilisePK) o;
         return vehicule == that.vehicule &&
                 client == that.client &&
-                Objects.equals(dateReservation, that.dateReservation);
+                Objects.equals(date, that.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(vehicule, client, dateReservation);
+        return Objects.hash(vehicule, client, date);
     }
 }

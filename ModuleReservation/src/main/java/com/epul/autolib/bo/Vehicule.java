@@ -6,14 +6,14 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "vehicule", schema = "autolib", catalog = "")
-public class VehiculeEntity {
+public class Vehicule {
     private int idVehicule;
     private int rfid;
     private Integer etatBatterie;
     private String disponibilite;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private TypeVehiculeEntity typeVehiculeByTypeVehicule;
+    private TypeVehicule typeVehiculeByTypeVehicule;
 
     @Id
     @Column(name = "idVehicule")
@@ -79,7 +79,7 @@ public class VehiculeEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        VehiculeEntity that = (VehiculeEntity) o;
+        Vehicule that = (Vehicule) o;
         return idVehicule == that.idVehicule &&
                 rfid == that.rfid &&
                 Objects.equals(etatBatterie, that.etatBatterie) &&
@@ -95,11 +95,11 @@ public class VehiculeEntity {
 
     @ManyToOne
     @JoinColumn(name = "type_vehicule", referencedColumnName = "idType_vehicule", nullable = false)
-    public TypeVehiculeEntity getTypeVehiculeByTypeVehicule() {
+    public TypeVehicule getTypeVehiculeByTypeVehicule() {
         return typeVehiculeByTypeVehicule;
     }
 
-    public void setTypeVehiculeByTypeVehicule(TypeVehiculeEntity typeVehiculeByTypeVehicule) {
+    public void setTypeVehiculeByTypeVehicule(TypeVehicule typeVehiculeByTypeVehicule) {
         this.typeVehiculeByTypeVehicule = typeVehiculeByTypeVehicule;
     }
 }

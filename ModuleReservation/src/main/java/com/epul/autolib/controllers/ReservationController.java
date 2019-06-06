@@ -3,7 +3,7 @@ package com.epul.autolib.controllers;
 import com.epul.autolib.domains.Adherent;
 import com.epul.autolib.domains.Oeuvrevente;
 import com.epul.autolib.domains.Reservation;
-import com.epul.autolib.dto.ReservationDTO;
+import com.epul.autolib.dto.ReservationDTOOld;
 import com.epul.autolib.repositories.AdherentRepository;
 import com.epul.autolib.repositories.OeuvreventeRepository;
 import com.epul.autolib.utilitaires.EtatReservationEnum;
@@ -59,26 +59,26 @@ public class ReservationController extends BasicController<Reservation> {
     @RequestMapping(method = RequestMethod.GET, value = "/nouveau")
     public ModelAndView ajouter(HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String, String> queryParameters) throws Exception {
         String destinationPage = ADD;
-        ReservationDTO reservationDTO = new ReservationDTO();
-        listesModifiablesReservation(request, reservationDTO);
+        ReservationDTOOld reservationDTOOld = new ReservationDTOOld();
+        listesModifiablesReservation(request, reservationDTOOld);
 
 
         queryParameters.computeIfPresent("idOeuvre", (key, value) -> {
-            reservationDTO.setIdOeuvrevente(Integer.parseInt(value));
+            reservationDTOOld.setIdOeuvrevente(Integer.parseInt(value));
             return "";
         });
 
         queryParameters.computeIfPresent("idAdherent", (key, value) -> {
-            reservationDTO.setIdAdherent(Integer.parseInt(value));
+            reservationDTOOld.setIdAdherent(Integer.parseInt(value));
             return "";
         });
 
-        request.setAttribute("reservation", reservationDTO);
+        request.setAttribute("reservation", reservationDTOOld);
 
         return new Layout(destinationPage);
     }
 
-    private void listesModifiablesReservation(HttpServletRequest request, ReservationDTO reservationDTO) {
+    private void listesModifiablesReservation(HttpServletRequest request, ReservationDTOOld reservationDTOOld) {
         List<Adherent> listeAdherent;
         listeAdherent = adherentRepository.findAll();
         request.setAttribute("listeAdherent", listeAdherent);
@@ -92,34 +92,34 @@ public class ReservationController extends BasicController<Reservation> {
         Object idAdherent = request.getSession().getAttribute("idAdherent");
         if(idAdherent != null) {
             request.getSession().removeAttribute("idAdherent");
-            reservationDTO.setIdAdherent((Integer) idAdherent);
+            reservationDTOOld.setIdAdherent((Integer) idAdherent);
         }
 
         Object idOeuvre = request.getSession().getAttribute("idOeuvre");
         if (idOeuvre != null) {
             request.getSession().removeAttribute("idOeuvre");
-            reservationDTO.setIdOeuvrevente((Integer) idOeuvre);
+            reservationDTOOld.setIdOeuvrevente((Integer) idOeuvre);
         }
 
         Object dateReservation = request.getSession().getAttribute("dateReservation");
         if (dateReservation != null) {
             request.getSession().removeAttribute("dateReservation");
-            reservationDTO.setDateReservation((Date) dateReservation);
+            reservationDTOOld.setDateReservation((Date) dateReservation);
         }
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/insererReservation")
-    public ModelAndView insert(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ReservationDTO reservationDTO) throws Exception {
+    public ModelAndView insert(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ReservationDTOOld reservationDTOOld) throws Exception {
         String destinationPage;
 
         try {
-            updateOrInsert(reservationDTO);
+            updateOrInsert(reservationDTOOld);
 
             destinationPage = LIST_RDR;
         } catch (Exception e) {
-            request.getSession().setAttribute("idAdherent", reservationDTO.getIdAdherent());
-            request.getSession().setAttribute("idOeuvre", reservationDTO.getIdOeuvrevente());
-            request.getSession().setAttribute("dateReservation", reservationDTO.getDateReservation());
+            request.getSession().setAttribute("idAdherent", reservationDTOOld.getIdAdherent());
+            request.getSession().setAttribute("idOeuvre", reservationDTOOld.getIdOeuvrevente());
+            request.getSession().setAttribute("dateReservation", reservationDTOOld.getDateReservation());
 
             String errorMessage;
             if(e instanceof DataIntegrityViolationException) {
@@ -137,59 +137,59 @@ public class ReservationController extends BasicController<Reservation> {
     @RequestMapping(method = RequestMethod.GET, value = "/modifier/{id}")
     public ModelAndView modifier(HttpServletRequest request, HttpServletResponse response,
                                 @PathVariable int id) throws Exception {
-        ReservationDTO reservationDTO = reservationRepository.findById(id).orElse(null).toDTO();
+        ReservationDTOOld reservationDTOOld = reservationRepository.findById(id).orElse(null).toDTO();
 
-        listesModifiablesReservation(request, reservationDTO);
+        listesModifiablesReservation(request, reservationDTOOld);
 
-        request.setAttribute("reservation", reservationDTO);
+        request.setAttribute("reservation", reservationDTOOld);
 
         return new Layout(UPDATE);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/modifierReservation")
-    public ModelAndView update(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ReservationDTO reservationDTO) throws Exception {
+    public ModelAndView update(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ReservationDTOOld reservationDTOOld) throws Exception {
         String destinationPage;
 
         try {
-            updateOrInsert(reservationDTO);
+            updateOrInsert(reservationDTOOld);
 
             destinationPage = LIST_RDR;
         } catch (Exception e) {
-            request.getSession().setAttribute("idAdherent", reservationDTO.getIdAdherent());
-            request.getSession().setAttribute("idOeuvre", reservationDTO.getIdOeuvrevente());
-            request.getSession().setAttribute("dateReservation", reservationDTO.getDateReservation());
+            request.getSession().setAttribute("idAdherent", reservationDTOOld.getIdAdherent());
+            request.getSession().setAttribute("idOeuvre", reservationDTOOld.getIdOeuvrevente());
+            request.getSession().setAttribute("dateReservation", reservationDTOOld.getDateReservation());
 
             request.getSession().setAttribute("erreur", e.getMessage());
-            destinationPage = UPDATE_RDR + reservationDTO.getId();
+            destinationPage = UPDATE_RDR + reservationDTOOld.getId();
         }
 
         return new Layout(destinationPage);
     }
 
-    private void updateOrInsert(ReservationDTO reservationDTO) throws Exception {
+    private void updateOrInsert(ReservationDTOOld reservationDTOOld) throws Exception {
         Exception exceptionAdherent = new Exception("Aucun adhérent sélectionné.");
         Exception exceptionOeuvre = new Exception("Aucune oeuvre sélectionnée.");
 
-        if(reservationDTO.getIdAdherent() == null) {
+        if(reservationDTOOld.getIdAdherent() == null) {
             throw exceptionAdherent;
         }
-        if(reservationDTO.getIdOeuvrevente() == null) {
+        if(reservationDTOOld.getIdOeuvrevente() == null) {
             throw exceptionOeuvre;
         }
 
-        Adherent adherent = adherentRepository.findById(reservationDTO.getIdAdherent()).orElseThrow(() -> exceptionAdherent);
+        Adherent adherent = adherentRepository.findById(reservationDTOOld.getIdAdherent()).orElseThrow(() -> exceptionAdherent);
 
-        Oeuvrevente oeuvre = oeuvreventeRepository.findById(reservationDTO.getIdOeuvrevente()).orElseThrow(() -> exceptionOeuvre);
+        Oeuvrevente oeuvre = oeuvreventeRepository.findById(reservationDTOOld.getIdOeuvrevente()).orElseThrow(() -> exceptionOeuvre);
 
-        reservationDTO.setAdherent(adherent);
-        reservationDTO.setOeuvre(oeuvre);
+        reservationDTOOld.setAdherent(adherent);
+        reservationDTOOld.setOeuvre(oeuvre);
 
         // Si on insère, le statut est null
-        if(reservationDTO.getStatut() == null || reservationDTO.getStatut().isEmpty()) {
-            reservationDTO.setStatut(EtatReservationEnum.PENDING.getLabel());
+        if(reservationDTOOld.getStatut() == null || reservationDTOOld.getStatut().isEmpty()) {
+            reservationDTOOld.setStatut(EtatReservationEnum.PENDING.getLabel());
         }
 
-        Reservation reservation = new Reservation(reservationDTO);
+        Reservation reservation = new Reservation(reservationDTOOld);
 
         reservationRepository.save(reservation);
     }

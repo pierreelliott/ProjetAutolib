@@ -1,6 +1,6 @@
 package com.epul.autolib.domains;
 
-import com.epul.autolib.dto.ReservationDTO;
+import com.epul.autolib.dto.ReservationDTOOld;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -36,12 +36,12 @@ public class Reservation {
 
     }
 
-    public Reservation(ReservationDTO reservationDTO) {
-        this.id = reservationDTO.getId();
-        this.dateReservation = reservationDTO.getDateReservation();
-        this.statut = reservationDTO.getStatut();
-        this.adherent = reservationDTO.getAdherent();
-        this.oeuvre = reservationDTO.getOeuvre();
+    public Reservation(ReservationDTOOld reservationDTOOld) {
+        this.id = reservationDTOOld.getId();
+        this.dateReservation = reservationDTOOld.getDateReservation();
+        this.statut = reservationDTOOld.getStatut();
+        this.adherent = reservationDTOOld.getAdherent();
+        this.oeuvre = reservationDTOOld.getOeuvre();
     }
 
     public Integer getId() {
@@ -101,7 +101,7 @@ public class Reservation {
         this.adherent = adherent;
     }
 
-    public ReservationDTO toDTO() {
-        return new ReservationDTO(this);
+    public ReservationDTOOld toDTO() {
+        return new ReservationDTOOld(this);
     }
 }

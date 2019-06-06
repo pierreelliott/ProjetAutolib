@@ -1,88 +1,42 @@
 package com.epul.autolib.dto;
 
-import com.epul.autolib.domains.Adherent;
-import com.epul.autolib.domains.Oeuvrevente;
-import com.epul.autolib.domains.Reservation;
-
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ReservationDTO {
+    private int vehicule;
+    private int client;
+    private Timestamp dateReservation;
+    private Timestamp dateEcheance;
 
-    private Integer id;
-    private Integer idOeuvrevente;
-    private Integer idAdherent;
-    private Date dateReservation;
-    private String statut;
-    private Oeuvrevente oeuvre;
-    private Adherent adherent;
-
-    public ReservationDTO() {
-
+    public int getVehicule() {
+        return vehicule;
     }
 
-    public ReservationDTO(Reservation reservation) {
-        this.id = reservation.getId();
-        this.idAdherent = reservation.getAdherent().getId();
-        this.idOeuvrevente = reservation.getOeuvre().getId();
-        this.dateReservation = reservation.getDateReservation();
-        this.statut = reservation.getStatut();
-        this.adherent = reservation.getAdherent();
-        this.oeuvre = reservation.getOeuvre();
+    public void setVehicule(int vehicule) {
+        this.vehicule = vehicule;
     }
 
-    public Integer getId() {
-        return id;
+    public int getClient() {
+        return client;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setClient(int client) {
+        this.client = client;
     }
 
-    public Integer getIdOeuvrevente() {
-        return idOeuvrevente;
-    }
-
-    public void setIdOeuvrevente(Integer idOeuvrevente) {
-        this.idOeuvrevente = idOeuvrevente;
-    }
-
-    public Integer getIdAdherent() {
-        return idAdherent;
-    }
-
-    public void setIdAdherent(Integer idAdherent) {
-        this.idAdherent = idAdherent;
-    }
-
-    public Date getDateReservation() {
+    public Timestamp getDateReservation() {
         return dateReservation;
     }
 
-    public void setDateReservation(Date dateReservation) {
+    public void setDateReservation(Timestamp dateReservation) {
         this.dateReservation = dateReservation;
     }
 
-    public String getStatut() {
-        return statut;
+    public Timestamp getDateEcheance() {
+        return dateEcheance;
     }
 
-    public void setStatut(String statut) {
-        this.statut = statut;
-    }
-
-    public Oeuvrevente getOeuvre() {
-        return oeuvre;
-    }
-
-    public void setOeuvre(Oeuvrevente oeuvre) {
-        this.oeuvre = oeuvre;
-    }
-
-    public Adherent getAdherent() {
-        return adherent;
-    }
-
-    public void setAdherent(Adherent adherent) {
-        this.adherent = adherent;
+    public void setDateEcheance(Timestamp dateEcheance) {
+        this.dateEcheance = dateEcheance;
     }
 }

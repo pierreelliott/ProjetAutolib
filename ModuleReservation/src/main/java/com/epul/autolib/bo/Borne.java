@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "borne", schema = "autolib", catalog = "")
-public class BorneEntity {
+public class Borne {
     private int idBorne;
     private byte etatBorne;
 
@@ -33,7 +33,7 @@ public class BorneEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BorneEntity that = (BorneEntity) o;
+        Borne that = (Borne) o;
         return idBorne == that.idBorne &&
                 etatBorne == that.etatBorne;
     }

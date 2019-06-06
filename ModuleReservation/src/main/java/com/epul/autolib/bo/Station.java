@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "station", schema = "autolib", catalog = "")
-public class StationEntity {
+public class Station {
     private int idStation;
     private BigDecimal latitude;
     private BigDecimal longitude;
@@ -89,7 +89,7 @@ public class StationEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StationEntity that = (StationEntity) o;
+        Station that = (Station) o;
         return idStation == that.idStation &&
                 Objects.equals(latitude, that.latitude) &&
                 Objects.equals(longitude, that.longitude) &&

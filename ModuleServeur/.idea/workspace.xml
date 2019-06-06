@@ -6,7 +6,26 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4e6c6e4-87b2-4624-a480-4c45b51e2531" name="Default" comment="" />
+    <list default="true" id="b4e6c6e4-87b2-4624-a480-4c45b51e2531" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTOOld.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/utilitaires/EtatVehiculeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/BorneEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Borne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ClientEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ReservationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ReservationEntityPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/ReservationPK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/StationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/TypeVehiculeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/TypeVehicule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/UtiliseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Utilise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/UtiliseEntityPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/UtilisePK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/VehiculeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Vehicule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/controllers/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/domains/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/domains/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/dto/ReservationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/tags/layout.tag" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/tags/layout.tag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/reservations/formReservation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/reservations/formReservation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -134,6 +153,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -166,6 +188,7 @@
     <option name="width" value="1678" />
     <option name="height" value="1008" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -256,7 +279,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="73103781-e73a-4be0-82c5-919a0d0e6c2c" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559814085241" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559815976738" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ModuleReservation" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -421,15 +444,16 @@
       <workItem from="1553547146610" duration="718000" />
       <workItem from="1554317900855" duration="1131000" />
       <workItem from="1557502602466" duration="174000" />
-      <workItem from="1559811401236" duration="2795000" />
+      <workItem from="1559811401236" duration="3382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32506000" />
+    <option name="totallyTimeSpent" value="33093000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7804054" visible="true" weight="0.25977996" />
       <window_info id="Structure" order="1" weight="0.25" />
