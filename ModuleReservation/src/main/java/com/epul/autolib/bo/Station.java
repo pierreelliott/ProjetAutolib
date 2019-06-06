@@ -103,4 +103,9 @@ public class Station {
     public int hashCode() {
         return Objects.hash(id, latitude, longitude, adresse, numero, ville, codePostal);
     }
+
+    @Transient
+    public String getCoordonnees() {
+        return latitude + "° N, " + longitude + "° O";
+    }
 }

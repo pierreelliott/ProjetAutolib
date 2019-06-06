@@ -7,7 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e6c6e4-87b2-4624-a480-4c45b51e2531" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/tags/layout.tag" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/tags/layout.tag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/vehicules/listerVehicules.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/java/com/epul/autolib/bo/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/stations/listerStations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ModuleReservation/src/main/webapp/WEB-INF/views/vues/stations/listerStations.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -262,7 +266,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="73103781-e73a-4be0-82c5-919a0d0e6c2c" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559820132248" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559829715197" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ModuleReservation" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -427,12 +431,12 @@
       <workItem from="1553547146610" duration="718000" />
       <workItem from="1554317900855" duration="1131000" />
       <workItem from="1557502602466" duration="174000" />
-      <workItem from="1559811401236" duration="3382000" />
+      <workItem from="1559811401236" duration="3981000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33093000" />
+    <option name="totallyTimeSpent" value="33692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />

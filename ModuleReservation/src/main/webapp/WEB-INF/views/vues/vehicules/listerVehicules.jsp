@@ -20,7 +20,8 @@
 					<tr>
 						<th>ID</th>
 						<th>Adresse</th>
-						<th>Coordonnées</th>
+						<th>Latitude</th>
+						<th>Longitude</th>
 					</tr>
 				</thead>
 
@@ -29,13 +30,8 @@
 						<tr>
 							<td>${item.id}</td>
 							<td>${item.numero} ${item.adresse} ${item.ville}, ${item.codePostal}</td>
-							<td>
-								<a href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
-									target="_blank">
-									<i class="fas fa-street-view mr-1"></i>
-										${item.coordonnees}
-								</a>
-							</td>
+							<td>${item.latitude}</td>
+							<td>${item.longitude}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

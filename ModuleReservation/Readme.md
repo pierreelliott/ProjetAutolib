@@ -1,28 +1,46 @@
-# Projet Oeuvres
+# Autolib' - Module client
 
-# Plugins
-## Gestion de la BDD
-La base de données est gérée par le plugin **flyway**, celui-ci permet
-de versionner les changements apportés à la BDD.
+J'ai importé le projet oeuvre pour faire l'appli cliente, donc c'est normal s'il 
+reste du code mort. C'est soit pour garder des exemples directement sous la main, 
+soit pour éviter les petites vagues rouges (et les erreurs de compilation qui 
+vont avec).
 
-L'ajout/modification de tables dans la base se fait par la création
-d'un nouveau fichier dans :
-<pre>src/main/resources/db/migration</pre>
+## Architecture
 
-Les fichiers sont nommés de la manière suivante :  
-<pre>V + [Version majeure] + [Version mineure] + [Version fix] + __ + [description rapide].sql</pre>
-Par exemple : "V-0.0.0000__init_baseoeuvre.sql"
+### Java
 
-### Actions à effectuer sur la BDD
-Si la base n'a pas déjà été initialisée, il faut (pour IntelliJ) se
-rendre dans l'onglet vertical de droite nommé *Maven*, puis *Plugins*
-et enfin dans *flyway* choisir *flyway:clean*.
+* bo : les classes Entity (BO = Business Object)
+* controllers : plutôt évident
+* dto : les équivalents des classes Entity mais simplifiées, utilisées avec 
+Hibernate (DTO = Data Transfer Object)
+* repositories : les accès à la BD pour chaque Entity
+* utilitaires : plutôt évident
 
-![Flyway clean](readme/flyway_clean.png)
+Dans les classes Entity, si l'on souhaite ajouter une propriété qui n'a pas vocation 
+à être insérée en BD, on peut rajouter `@Transient`.
 
-Lors de l'ajout d'un fichier de modification de la base (une
-migration), **flyway** s'occupe de migrer la base lors du prochain
-démarrage du projet.
+Afin de ne pas avoir à réécrire le PATH des différentes vues, j'ai fait des 
+constantes dans la classe utilitaire `Vues` (j'ai laissé des exemples).
 
-### Plus d'informations sur **flyway**
-Plus d'informations sur le site : [flywaydb.org](https://flywaydb.org/getstarted)
+Règle tacite : si un champ de la base est un `VARCHAR` avec des valeurs fixes, on 
+crée un `Enum` pour éviter les erreurs.
+
+### Vues
+
+Les vues utilisent un principe de Layout (pour ne pas s'emmerder à tout réécrire
+à chaque fois).  
+Pour ce faire, on a un tag (**layout.tag**) qui comporte le code de base d'une page 
+HTML, l'import des scripts/librairies/... et des navbar et footer.
+
+On peut utiliser ce tag dans d'autres pages JSP grâce à :
+```
+<t:layout>
+    <jsp:attribute name="title">Titre de ma page</jsp:attribute>
+    <jsp:body>
+        // Mon code HTML
+    </jsp:body>
+</t:layout>
+```
+
+Chaque vue est dispatchée dans un dossier en fonction de sa fonction : tout ce 
+qui concerne l'affichage/gestion des stations se trouve dans le dossier `stations`.
