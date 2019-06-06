@@ -4,7 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-    <jsp:attribute name="title">Médiathèque de Polytech - Erreur</jsp:attribute>
+    <jsp:attribute name="title">Autolib' - Erreur</jsp:attribute>
     <jsp:body>
         <div class="col-md-12 well well-md">
             <h1>Gestion des erreurs </h1>

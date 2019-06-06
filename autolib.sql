@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 06 Juin 2019 à 14:59
+-- Généré le :  Jeu 06 Juin 2019 à 15:19
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -736,10 +736,10 @@ CREATE TABLE `type_vehicule` (
 --
 
 INSERT INTO `type_vehicule` (`idType_vehicule`, `categorie`, `type_vehicule`) VALUES
-(1, 'Petite citadine', 'CitroÃ«n C1'),
+(1, 'Petite citadine', 'Citroën C1'),
 (2, 'Petite citadine', 'Toyota Aygo'),
-(3, 'Utilitaire', 'CitroÃ«n Berlingo'),
-(4, 'Utilitaire', 'CitroÃ«n Berlingo PRM'),
+(3, 'Utilitaire', 'Citroën Berlingo'),
+(4, 'Utilitaire', 'Citroën Berlingo PRM'),
 (5, 'Utilitaire', 'Nissan Evalia'),
 (6, 'Compacte', 'Toyota Yaris'),
 (7, 'Familliale', 'C4 Piccaso'),

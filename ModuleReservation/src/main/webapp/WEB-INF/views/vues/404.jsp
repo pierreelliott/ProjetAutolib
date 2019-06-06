@@ -4,7 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-    <jsp:attribute name="title">Médiathèque de Polytech - Page introuvable</jsp:attribute>
+    <jsp:attribute name="title">Autolib' - Page introuvable</jsp:attribute>
     <jsp:body>
         <div class="jumbotron text-center">
 

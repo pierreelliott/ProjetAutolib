@@ -4,7 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-    <jsp:attribute name="title">Médiathèque de Polytech - Connexion</jsp:attribute>
+    <jsp:attribute name="title">Autolib' - Connexion</jsp:attribute>
     <jsp:body>
         <form method="post" action="<c:url value="/controleLogin"/>">
         <div class="col-md-12 well well-md">

@@ -7,7 +7,7 @@
 	<jsp:attribute name="title">Autolib' - Liste des véhicules</jsp:attribute>
 	<jsp:body>
 		<div class="jumbotron text-center">
-			<h1>Listing des stations</h1>
+			<h1>Listing des véhicules</h1>
 		</div>
 
 		<div class="container">
