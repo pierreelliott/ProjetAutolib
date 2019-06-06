@@ -106,6 +106,7 @@ public class Station {
 
     @Transient
     public String getCoordonnees() {
-        return latitude + "° N, " + longitude + "° O";
+        return latitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° N, "
+                + longitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° O";
     }
 }

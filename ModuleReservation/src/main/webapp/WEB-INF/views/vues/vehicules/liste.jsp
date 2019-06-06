@@ -4,7 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-	<jsp:attribute name="title">Autolib' - Liste des stations</jsp:attribute>
+	<jsp:attribute name="title">Autolib' - Liste des véhicules</jsp:attribute>
 	<jsp:body>
 		<div class="jumbotron text-center">
 			<h1>Listing des stations</h1>
@@ -19,19 +19,29 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Adresse</th>
-						<th>Latitude</th>
-						<th>Longitude</th>
+						<th>RFID</th>
+						<th>Batterie</th>
+						<th>Disponibilité</th>
+						<th>Coordonnées</th>
+						<th>Type de véhicule</th>
 					</tr>
 				</thead>
 
 				<tbody>
-					<c:forEach items="${listeStation}" var="item">
+					<c:forEach items="${listeVehicule}" var="item">
 						<tr>
-							<td>${item.id}</td>
-							<td>${item.numero} ${item.adresse} ${item.ville}, ${item.codePostal}</td>
-							<td>${item.latitude}</td>
-							<td>${item.longitude}</td>
+							<td>${item.idVehicule}</td>
+							<td>${item.rfid}</td>
+							<td>${item.etatBatterie}</td>
+							<td>${item.disponibilite}</td>
+							<td>
+								<a href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
+								   target="_blank">
+									<i class="fas fa-street-view mr-1"></i>
+										${item.coordonnees}
+								</a>
+							</td>
+							<td>${item.typeVehicule.typeVehicule}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

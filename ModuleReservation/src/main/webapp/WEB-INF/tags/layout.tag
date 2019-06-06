@@ -32,9 +32,8 @@
 				<div class="collapse navbar-collapse" id="navbarToggler">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
-							<a class="nav-link" href="<c:url value="/"/>"><i class="fas fa-home mr-1"></i>Accueil <span class="sr-only">(page courante)</span></a>
+							<a class="nav-link" href="<c:url value="/"/>"><i class="fas fa-home mr-1"></i>Accueil</a>
 						</li>
-
 
 						<li class="nav-item ml-auto">
 							<a class="nav-link" href="<c:url value="/stations/carte"/>">Stations</a>
@@ -42,16 +41,20 @@
 						<li class="nav-item ml-auto">
 							<a class="nav-link" href="<c:url value="/stations/liste"/>">Liste des stations</a>
 						</li>
-						<%--<li class="nav-item dropdown">
+						<li class="nav-item ml-auto">
+							<a class="nav-link" href="<c:url value="/vehicules/liste"/>">Liste des véhicules</a>
+						</li>
+
+						<%--<li class="nav-item dropdown"> // TODO Joli dropdown, le bouton principal est un lien
 							<div class="btn-group">
 								<a role="button" href="<c:url value="/reservations/liste"/>" class="nav-link btn btn-default">Réservations</a>
-									<button role="button" class="nav-link btn btn-default dropdown-toggle dropdown-toggle-split"
-										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="sr-only">Menu déroulant</span>
-									</button>
-									<div class="dropdown-menu" aria-labelledby="reservationsNavbarDropdown">
-										<a class="dropdown-item" href="<c:url value="/reservations/nouveau"/>">Ajouter une réservation</a>
-									</div>
+								<button role="button" class="nav-link btn btn-default dropdown-toggle dropdown-toggle-split"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="sr-only">Menu déroulant</span>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="reservationsNavbarDropdown">
+									<a class="dropdown-item" href="<c:url value="/reservations/nouveau"/>">Ajouter une réservation</a>
+								</div>
 							</div>
 						</li>--%>
 					</ul>

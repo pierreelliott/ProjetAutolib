@@ -13,7 +13,7 @@ public class Vehicule {
     private String disponibilite;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private TypeVehicule typeVehiculeByTypeVehicule;
+    private TypeVehicule typeVehicule;
 
     @Id
     @Column(name = "idVehicule")
@@ -95,11 +95,17 @@ public class Vehicule {
 
     @ManyToOne
     @JoinColumn(name = "type_vehicule", referencedColumnName = "idType_vehicule", nullable = false)
-    public TypeVehicule getTypeVehiculeByTypeVehicule() {
-        return typeVehiculeByTypeVehicule;
+    public TypeVehicule getTypeVehicule() {
+        return typeVehicule;
     }
 
-    public void setTypeVehiculeByTypeVehicule(TypeVehicule typeVehiculeByTypeVehicule) {
-        this.typeVehiculeByTypeVehicule = typeVehiculeByTypeVehicule;
+    public void setTypeVehicule(TypeVehicule typeVehicule) {
+        this.typeVehicule = typeVehicule;
+    }
+
+    @Transient
+    public String getCoordonnees() {
+        return latitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° N, "
+                + longitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° O";
     }
 }

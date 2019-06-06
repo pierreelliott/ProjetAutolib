@@ -8,8 +8,14 @@ public class Vues {
     public static final String INDEX_RDR = "redirect:/";
 
     public static class Stations {
-        public static final String LIST = "vues/stations/listerStations";
+        public static final String LIST = "vues/stations/liste";
     }
+
+    public static class Vehicules {
+        public static final String LIST = "vues/vehicules/liste";
+    }
+
+    // ========== Anciens exemples ============
 
     public static class Adherents {
         public static final String LIST = "vues/adherents/listerAdherents";

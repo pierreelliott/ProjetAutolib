@@ -42,7 +42,7 @@ public class DemandeReservationTopic implements MessageListener {
     /**
      * @see MessageListener#onMessage(Message)
      */
-    public void onMessage(Message message) {
+    public void onMessage(Message message) { // TODO Faire les vérifications sur la réservation ici aussi ?
         boolean ok = false;
         // On gère le message récupéré dans le topic
         try {
