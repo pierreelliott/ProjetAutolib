@@ -229,7 +229,9 @@ CREATE TABLE `client` (
   `idClient` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `prenom` varchar(45) NOT NULL,
-  `date_naissance` date DEFAULT NULL
+  `date_naissance` date DEFAULT NULL,
+  `login` varchar(100),
+  `password` varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -907,7 +909,7 @@ ALTER TABLE `reservation`
 -- Index pour la table `station`
 --
 ALTER TABLE `station`
-  ADD PRIMARY KEY (`idStation`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `type_vehicule`
@@ -952,7 +954,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT pour la table `station`
 --
 ALTER TABLE `station`
-  MODIFY `idStation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT pour la table `type_vehicule`
@@ -974,7 +976,7 @@ ALTER TABLE `vehicule`
 -- Contraintes pour la table `borne`
 --
 ALTER TABLE `borne`
-  ADD CONSTRAINT `fk_Borne_Station1` FOREIGN KEY (`station`) REFERENCES `station` (`idStation`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Borne_Station1` FOREIGN KEY (`station`) REFERENCES `station` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Borne_Vehicule1` FOREIGN KEY (`idVehicule`) REFERENCES `vehicule` (`idVehicule`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

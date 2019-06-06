@@ -39,6 +39,9 @@
 						<li class="nav-item ml-auto">
 							<a class="nav-link" href="<c:url value="/stations/carte"/>">Stations</a>
 						</li>
+						<li class="nav-item ml-auto">
+							<a class="nav-link" href="<c:url value="/stations/liste"/>">Liste des stations</a>
+						</li>
 						<%--<li class="nav-item dropdown">
 							<div class="btn-group">
 								<a role="button" href="<c:url value="/reservations/liste"/>" class="nav-link btn btn-default">Réservations</a>
