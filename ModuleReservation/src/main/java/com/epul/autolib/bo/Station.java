@@ -2,6 +2,7 @@ package com.epul.autolib.bo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -14,6 +15,7 @@ public class Station {
     private Integer numero;
     private String ville;
     private Integer codePostal;
+    private Collection<Borne> bornes;
 
     @Id
     @Column(name = "id")
@@ -83,6 +85,15 @@ public class Station {
 
     public void setCodePostal(Integer codePostal) {
         this.codePostal = codePostal;
+    }
+
+    @OneToMany(mappedBy = "station")
+    public Collection<Borne> getBornes() {
+        return bornes;
+    }
+
+    public void setBornes(Collection<Borne> bornes) {
+        this.bornes = bornes;
     }
 
     @Override

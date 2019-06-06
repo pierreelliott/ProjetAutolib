@@ -38,7 +38,7 @@
 								<a href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
 								   target="_blank">
 									<i class="fas fa-street-view mr-1"></i>
-										${item.coordonnees}
+										(${item.coordonnees})
 								</a>
 							</td>
 							<td>${item.typeVehicule.typeVehicule}</td>

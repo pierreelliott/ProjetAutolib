@@ -5,6 +5,13 @@ reste du code mort. C'est soit pour garder des exemples directement sous la main
 soit pour éviter les petites vagues rouges (et les erreurs de compilation qui 
 vont avec).
 
+## Notes
+
+### Borne
+
+La propriété `etatBorne` est un booléen précisant s'il y a un véhicule ou non. `True` 
+si elle est vide, `False` s'il y a un véhicule.
+
 ## Architecture
 
 ### Java

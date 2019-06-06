@@ -21,6 +21,7 @@
 						<th>ID</th>
 						<th>Adresse</th>
 						<th>Coordonnées</th>
+						<th>Bornes</th>
 					</tr>
 				</thead>
 
@@ -33,9 +34,10 @@
 								<a href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
 									target="_blank">
 									<i class="fas fa-street-view mr-1"></i>
-										${item.coordonnees}
+										(${item.coordonnees})
 								</a>
 							</td>
+							<td>Nombre de bornes : ${item.bornes.size()}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
