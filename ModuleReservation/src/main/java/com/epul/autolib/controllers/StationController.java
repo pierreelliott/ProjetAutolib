@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RequestMapping("")
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@RequestMapping("/stations")
 @RestController
 @CrossOrigin
 public class StationController extends BasicController<Station> {
@@ -21,8 +25,20 @@ public class StationController extends BasicController<Station> {
         this.stationRepository = stationRepository;
     }
 
-    @RequestMapping(value = "/stations")
-    public String listeStations() {
-        return Vues.Erreur.E404; // TODO
+    @RequestMapping(value = "")
+    public ModelAndView redirect(HttpServletRequest request) {
+        return new ModelAndView("redirect:/stations/carte");
+    }
+
+    @RequestMapping(value = "/liste")
+    public ModelAndView listeStations(HttpServletRequest request) {
+        List<Station> stations = stationRepository.findAll();
+        request.setAttribute("listeStation", stations);
+        return new ModelAndView(Vues.Stations.LIST);
+    }
+
+    @RequestMapping(value = "/carte")
+    public ModelAndView carteStations(HttpServletRequest request) {
+        return new ModelAndView(Vues.Erreur.E404); // TODO
     }
 }

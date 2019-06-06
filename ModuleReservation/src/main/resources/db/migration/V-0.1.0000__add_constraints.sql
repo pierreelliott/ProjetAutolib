@@ -1,1 +1,0 @@
-ALTER TABLE `reservation` ADD UNIQUE `unique_oeuvre_date`(`id_oeuvrevente`, `date_reservation`);

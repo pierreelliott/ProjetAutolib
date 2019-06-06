@@ -668,7 +668,7 @@ INSERT INTO `reservation` (`vehicule`, `client`, `date_reservation`, `date_echea
 --
 
 CREATE TABLE `station` (
-  `idStation` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `latitude` decimal(9,6) NOT NULL,
   `longitude` decimal(9,6) NOT NULL,
   `adresse` varchar(200) DEFAULT NULL,
@@ -681,7 +681,7 @@ CREATE TABLE `station` (
 -- Déchargement des données de la table `station`
 --
 
-INSERT INTO `station` (`idStation`, `latitude`, `longitude`, `adresse`, `numero`, `ville`, `code_postal`) VALUES
+INSERT INTO `station` (`id`, `latitude`, `longitude`, `adresse`, `numero`, `ville`, `code_postal`) VALUES
 (1, '45.745013', '4.871353', 'Place Ambroise Courtois', 18, 'LYON', 69003),
 (2, '45.756529', '4.835870', 'Place Antonin Poncet', 1, 'LYON', 69002),
 (3, '45.736646', '4.869195', 'Place du 11 Novembre 1918', 1, 'LYON', 69008),

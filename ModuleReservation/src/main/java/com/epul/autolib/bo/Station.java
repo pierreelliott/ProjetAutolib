@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "station", schema = "autolib", catalog = "")
 public class Station {
-    private int idStation;
+    private int id;
     private BigDecimal latitude;
     private BigDecimal longitude;
     private String adresse;
@@ -16,13 +16,13 @@ public class Station {
     private Integer codePostal;
 
     @Id
-    @Column(name = "idStation")
-    public int getIdStation() {
-        return idStation;
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public void setIdStation(int idStation) {
-        this.idStation = idStation;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
@@ -90,7 +90,7 @@ public class Station {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Station that = (Station) o;
-        return idStation == that.idStation &&
+        return id == that.id &&
                 Objects.equals(latitude, that.latitude) &&
                 Objects.equals(longitude, that.longitude) &&
                 Objects.equals(adresse, that.adresse) &&
@@ -101,6 +101,6 @@ public class Station {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idStation, latitude, longitude, adresse, numero, ville, codePostal);
+        return Objects.hash(id, latitude, longitude, adresse, numero, ville, codePostal);
     }
 }

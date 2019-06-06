@@ -7,6 +7,10 @@ public class Vues {
     public static final String INDEX = "index";
     public static final String INDEX_RDR = "redirect:/";
 
+    public static class Stations {
+        public static final String LIST = "vues/stations/listerStations";
+    }
+
     public static class Adherents {
         public static final String LIST = "vues/adherents/listerAdherents";
         public static final String ADD = "vues/adherents/ajouterAdherent";
