@@ -1,5 +1,6 @@
 package ejb;
 
+import dto.ReservationDTO;
 import meserreurs.MonException;
 import metier.*;
 
@@ -51,17 +52,17 @@ public class DemandeReservationTopic implements MessageListener {
                 System.out.println("Message valide");
                 ObjectMessage objectMessage = (ObjectMessage) message;
 
-                Reservation reservation = (Reservation) objectMessage.getObject();
+                ReservationDTO reservation = (ReservationDTO) objectMessage.getObject();
                 // On insère cette demande d'inscription dans la base de données
                 // on s'assure que l'écriture ne se fera qu'une fois.
                 message = null;
                 try {
                     // on construit un objet Entity
-                    ReservationEntity reservationEntity = new ReservationEntity();
+                    Reservation reservationEntity = new Reservation();
 
                     // on tansfère les données reçues dans l'objet Entity
                     reservationEntity.setClient(reservation.getClient());
-                    reservationEntity.setVehicule(reservation.getVehicule());
+                    reservationEntity.setVehicule(reservation.getIdVehicule());
                     reservationEntity.setDateEcheance(reservation.getDateEcheance());
                     reservationEntity.setDateReservation(reservation.getDateReservation());
 

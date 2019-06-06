@@ -6,14 +6,14 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "vehicule", schema = "autolib", catalog = "")
-public class VehiculeEntity {
+public class Vehicule {
     private int idVehicule;
     private int rfid;
     private Integer etatBatterie;
     private String disponibilite;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private TypeVehiculeEntity typeVehiculeByTypeVehicule;
+    private TypeVehicule typeVehicule;
 
     @Id
     @Column(name = "idVehicule")
@@ -79,7 +79,7 @@ public class VehiculeEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        VehiculeEntity that = (VehiculeEntity) o;
+        Vehicule that = (Vehicule) o;
         return idVehicule == that.idVehicule &&
                 rfid == that.rfid &&
                 Objects.equals(etatBatterie, that.etatBatterie) &&
@@ -95,11 +95,17 @@ public class VehiculeEntity {
 
     @ManyToOne
     @JoinColumn(name = "type_vehicule", referencedColumnName = "idType_vehicule", nullable = false)
-    public TypeVehiculeEntity getTypeVehiculeByTypeVehicule() {
-        return typeVehiculeByTypeVehicule;
+    public TypeVehicule getTypeVehicule() {
+        return typeVehicule;
     }
 
-    public void setTypeVehiculeByTypeVehicule(TypeVehiculeEntity typeVehiculeByTypeVehicule) {
-        this.typeVehiculeByTypeVehicule = typeVehiculeByTypeVehicule;
+    public void setTypeVehicule(TypeVehicule typeVehicule) {
+        this.typeVehicule = typeVehicule;
+    }
+
+    @Transient
+    public String getCoordonnees() {
+        return latitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° N, "
+                + longitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° O";
     }
 }

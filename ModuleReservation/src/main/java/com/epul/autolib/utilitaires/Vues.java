@@ -13,6 +13,21 @@ public class Vues {
 
     public static class Vehicules {
         public static final String LIST = "vues/vehicules/liste";
+
+        public static final String LIST_RDR = "redirect:/vehicules/liste";
+    }
+
+    public static class Reservations {
+        public static final String LIST = "vues/reservations/liste";
+        public static final String ADD = "vues/reservations/nouveau";
+        public static final String UPDATE = "vues/reservations/modifier";
+
+        public static final String LIST_RDR = "redirect:/reservations/liste";
+    }
+
+    public static class Erreur { // Devraient plus être utiles
+        public static final String E404 = "vues/404";
+        public static final String ERREUR = "vues/Erreur";
     }
 
     // ========== Anciens exemples ============
@@ -31,18 +46,5 @@ public class Vues {
         public static final String UPDATE = "vues/oeuvres/modifierOeuvre";
 
         public static final String LIST_RDR = "redirect:/oeuvres/liste";
-    }
-
-    public static class Reservations {
-        public static final String LIST = "vues/reservations/listerReservations";
-        public static final String ADD = "vues/reservations/ajouterReservation";
-        public static final String UPDATE = "vues/reservations/modifierReservation";
-
-        public static final String LIST_RDR = "redirect:/reservations/liste";
-    }
-
-    public static class Erreur { // Devraient plus être utiles
-        public static final String E404 = "vues/404";
-        public static final String ERREUR = "vues/Erreur";
     }
 }

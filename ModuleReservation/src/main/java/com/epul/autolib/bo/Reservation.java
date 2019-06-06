@@ -1,5 +1,7 @@
 package com.epul.autolib.bo;
 
+import com.epul.autolib.dto.ReservationDTO;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -14,6 +16,17 @@ public class Reservation {
     private Timestamp dateEcheance;
     private Client client;
 
+    public Reservation() {
+
+    }
+
+    public Reservation(ReservationDTO reservationDTO) {
+        this.vehicule = reservationDTO.getIdVehicule();
+        this.dateReservation = reservationDTO.getDateReservation();
+        this.dateEcheance = reservationDTO.getDateEcheance();
+        this.client = reservationDTO.getClient();
+    }
+
     @Id
     @Column(name = "vehicule")
     public int getVehicule() {
@@ -26,11 +39,11 @@ public class Reservation {
 
 //    @Id
 //    @Column(name = "client", insertable = false, updatable = false)
-//    public int getClient() {
+//    public int getIdClient() {
 //        return client;
 //    }
 //
-//    public void setClient(int client) {
+//    public void setIdClient(int client) {
 //        this.client = client;
 //    }
 

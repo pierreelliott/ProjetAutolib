@@ -1,8 +1,8 @@
-package com.epul.autolib.dto;
+package dto;
 
-import com.epul.autolib.bo.Client;
-import com.epul.autolib.bo.Station;
-import com.epul.autolib.bo.Vehicule;
+import metier.Client;
+import metier.Station;
+import metier.Vehicule;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

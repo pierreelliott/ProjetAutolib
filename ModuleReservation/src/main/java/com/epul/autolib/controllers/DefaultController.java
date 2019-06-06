@@ -24,7 +24,7 @@ public class DefaultController implements ErrorController {
 
     @RequestMapping("/accueil")
     public ModelAndView pageAccueil(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new Layout(Vues.INDEX_RDR);
+        return new Layout(Vues.INDEX);
     }
 
     @RequestMapping("/404/*")
