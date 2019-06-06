@@ -9,6 +9,7 @@ public class Borne {
     private int idBorne;
     private boolean etatBorne;
     private Station station;
+    private Vehicule vehicule;
 
     @Id
     @Column(name = "idBorne")
@@ -38,6 +39,16 @@ public class Borne {
 
     public void setStation(Station station) {
         this.station = station;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "idVehicule", referencedColumnName = "idVehicule")
+    public Vehicule getVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 
     @Override

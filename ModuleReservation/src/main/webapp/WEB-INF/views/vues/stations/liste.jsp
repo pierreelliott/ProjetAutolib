@@ -37,7 +37,11 @@
 										(${item.coordonnees})
 								</a>
 							</td>
-							<td>Nombre de bornes : ${item.bornes.size()}</td>
+							<td>
+								<i class="fas fa-car car-green" style="color: green;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesLibres }</span>
+								<i class="fas fa-car car-blue" style="color: blue;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesReserves }</span>
+								<i class="fas fa-car car-orange" style="color: orange;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesAbsents }</span>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
