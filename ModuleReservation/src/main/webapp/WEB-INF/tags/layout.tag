@@ -84,8 +84,8 @@
 			</section>
 
 			<footer class="container-fluid text-center mt-auto">
-				<div class="footer-copyright text-center py-3">© 2018 Copyright : PE Thiboud - J. Perier-Camby
-					<p>Médiathèque de POLYTECH - 2018-2019 - TP de présentation</p>
+				<div class="footer-copyright text-center py-3">© 2018 Copyright : PE Thiboud - J. Perier-Camby - Axel Bertrand - Omran Haidari
+					<p>Autolib - 2018-2019 - TP de présentation</p>
 				</div>
 			</footer>
 		</div>

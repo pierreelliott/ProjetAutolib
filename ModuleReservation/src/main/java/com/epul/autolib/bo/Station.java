@@ -120,4 +120,19 @@ public class Station {
         return latitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° N, "
                 + longitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° O";
     }
+
+    @Transient
+    public int getNbVehiculesLibres() {
+        return (int) bornes.stream().filter(borne -> !borne.getEtatBorne()).filter(borne -> borne.getVehicule().getDisponibilite().equals("LIBRE")).count();
+    }
+
+    @Transient
+    public int getNbVehiculesReserves() {
+        return (int) bornes.stream().filter(borne -> !borne.getEtatBorne()).filter(borne -> !borne.getVehicule().getDisponibilite().equals("LIBRE")).count();
+    }
+
+    @Transient
+    public int getNbVehiculesAbsents() {
+        return (int) bornes.stream().filter(borne -> borne.getEtatBorne()).count();
+    }
 }
