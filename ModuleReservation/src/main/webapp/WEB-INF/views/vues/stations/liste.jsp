@@ -38,9 +38,9 @@
 								</a>
 							</td>
 							<td>
-								<i class="fas fa-car car-green" style="color: green;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesLibres }</span>
-								<i class="fas fa-car car-blue" style="color: blue;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesReserves }</span>
-								<i class="fas fa-car car-orange" style="color: orange;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesAbsents }</span>
+								<i class="fas fa-car text-success"></i><span class="badge badge-pill badge-success">${ item.nbVehiculesLibres }</span>
+								<i class="fas fa-car text-primary"></i><span class="badge badge-pill badge-primary">${ item.nbVehiculesReserves }</span>
+								<i class="fas fa-car text-warning"></i><span class="badge badge-pill badge-warning">${ item.nbVehiculesAbsents }</span>
 							</td>
 						</tr>
 					</c:forEach>
