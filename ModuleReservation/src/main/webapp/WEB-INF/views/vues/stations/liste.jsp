@@ -31,7 +31,7 @@
 							<td>${item.id}</td>
 							<td>${item.numero} ${item.adresse} ${item.ville}, ${item.codePostal}</td>
 							<td>
-								<a href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
+								<a class="text-decoration-none" href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
 									target="_blank">
 									<i class="fas fa-street-view mr-1"></i>
 										(${item.coordonnees})

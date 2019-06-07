@@ -18,6 +18,8 @@ import java.util.List;
 @CrossOrigin
 public class VehiculeController extends BasicController<Station> {
 
+    private final int nbVehiculesParPage = 15;
+
     private final VehiculeRepository vehiculeRepository;
 
     @Autowired
@@ -28,8 +30,23 @@ public class VehiculeController extends BasicController<Station> {
 
     @RequestMapping(value = "/liste")
     public ModelAndView listeStations(HttpServletRequest request) {
-        List<Vehicule> vehicules = vehiculeRepository.findAll();
+        List<Vehicule> vehiculesList = vehiculeRepository.findAll();
+
+        int page = 1;
+        if(request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+
+        // Pour pagination
+        int startIndex = nbVehiculesParPage * (page - 1);
+        int endIndex = Math.min((nbVehiculesParPage * page), vehiculesList.size());
+        int nbPages = (int) Math.ceil((double) vehiculesList.size() / nbVehiculesParPage);
+        request.setAttribute("nbPages", nbPages);
+        request.setAttribute("currentPage", page);
+
+        List<Vehicule> vehicules = vehiculesList.subList(startIndex, endIndex);
         request.setAttribute("listeVehicule", vehicules);
+
         return new ModelAndView(Vues.Vehicules.LIST);
     }
 
