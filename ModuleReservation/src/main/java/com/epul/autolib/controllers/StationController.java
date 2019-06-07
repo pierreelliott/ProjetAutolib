@@ -57,6 +57,10 @@ public class StationController extends BasicController<Station> {
 
     @RequestMapping(value = "/carte")
     public ModelAndView carteStations(HttpServletRequest request) {
-        return new ModelAndView(Vues.Erreur.E404); // TODO
+        List<Station> stations = stationRepository.findAll();
+
+        request.setAttribute("listeStation", stations);
+
+        return new ModelAndView(Vues.Stations.CARTE);
     }
 }
