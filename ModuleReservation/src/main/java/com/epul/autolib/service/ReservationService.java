@@ -9,18 +9,12 @@ import javax.annotation.Resource;
 @Service
 public class ReservationService {
 
-    @Resource(lookup = "java:jboss/exported/topic/DemandeReservationJmsTopic")
-    private Topic topic;
-    // On accède à l'EJB
-    @Resource(mappedName = "java:/ConnectionFactory")
-    private TopicConnectionFactory cf;
-
     /**
      * Envoi d'un `ReservationDTO` au Topic JMS
      * @param reservationDTO
      * @return
      */
-    public boolean publier(ReservationDTO reservationDTO) {
+    public boolean publier(ReservationDTO reservationDTO, Topic topic, TopicConnectionFactory cf) {
         boolean ok = true;
         TopicConnection connection = null;
 

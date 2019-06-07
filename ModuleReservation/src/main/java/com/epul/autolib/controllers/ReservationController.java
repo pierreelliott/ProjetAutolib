@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
+import javax.jms.Topic;
+import javax.jms.TopicConnectionFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
@@ -31,6 +34,12 @@ public class ReservationController extends BasicController<Reservation> {
     private final VehiculeRepository vehiculeRepository;
     private final StationRepository stationRepository;
     private final ReservationService reservationService;
+
+    @Resource(lookup = "java:jboss/exported/topic/DemandeReservationJmsTopic")
+    private Topic topic;
+    // On accède à l'EJB
+    @Resource(mappedName = "java:/ConnectionFactory")
+    private TopicConnectionFactory cf;
 
     @Autowired
     public ReservationController(ReservationRepository reservationRepository, VehiculeRepository vehiculeRepository, StationRepository stationRepository, ReservationService reservationService) {
@@ -79,7 +88,7 @@ public class ReservationController extends BasicController<Reservation> {
         request.setAttribute("reservation", reservationDTO);
 
         // FIXME C'est juste pour tester
-        reservationDTO.setDateReservation((Timestamp) new Date());
+        reservationDTO.setDateReservation(new Timestamp(new Date().getTime()));
         insert(request, response, reservationDTO);
 
         // TODO Envoyer sur la page de réservation
@@ -104,7 +113,7 @@ public class ReservationController extends BasicController<Reservation> {
 
             // TODO Vérification des informations renseignées
 
-            reservationService.publier(reservationDTO);
+            reservationService.publier(reservationDTO, topic, cf);
 
             destinationPage = Vues.Vehicules.LIST;
         } catch (Exception e) { // TODO Gérer les erreurs

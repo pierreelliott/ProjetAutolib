@@ -49,7 +49,12 @@ public class DemandeReservationTopic implements MessageListener {
         try {
             // On transforme le message en demande de réservation
             if (message != null) {
+                System.out.println("=====================================================");
+                System.out.println("=====================================================");
                 System.out.println("Message valide");
+                System.out.println("Message valide");
+                System.out.println("=====================================================");
+                System.out.println("=====================================================");
                 ObjectMessage objectMessage = (ObjectMessage) message;
 
                 ReservationDTO reservation = (ReservationDTO) objectMessage.getObject();
