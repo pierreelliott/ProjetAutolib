@@ -1,17 +1,15 @@
 package com.epul.autolib.controllers;
 
-import com.epul.autolib.domains.Adherent;
-import com.epul.autolib.domains.Oeuvrevente;
+import com.epul.autolib.bo.Station;
 import com.epul.autolib.domains.Reservation;
-import com.epul.autolib.dto.ReservationDTOOld;
-import com.epul.autolib.repositories.AdherentRepository;
-import com.epul.autolib.repositories.OeuvreventeRepository;
+import com.epul.autolib.dto.ReservationDTO;
+import com.epul.autolib.repositories.*;
+import com.epul.autolib.service.ReservationService;
 import com.epul.autolib.utilitaires.EtatReservationEnum;
 import com.epul.autolib.utilitaires.Layout;
+import com.epul.autolib.utilitaires.Vues;
 import com.epul.autolib.utilitaires.VuesAlt;
-import com.epul.autolib.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +18,8 @@ import javax.jms.Topic;
 import javax.jms.TopicConnectionFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Date;
+import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +29,10 @@ import java.util.Map;
 public class ReservationController extends BasicController<Reservation> {
 
     private final ReservationRepository reservationRepository;
-    private final AdherentRepository adherentRepository;
-    private final OeuvreventeRepository oeuvreventeRepository;
+    private final VehiculeRepository vehiculeRepository;
+    private final ClientRepository clientRepository;
+    private final StationRepository stationRepository;
+    private final ReservationService reservationService;
 
     @Resource(lookup = "java:jboss/exported/topic/DemandeReservationJmsTopic")
     private Topic topic;
@@ -40,12 +41,14 @@ public class ReservationController extends BasicController<Reservation> {
     private TopicConnectionFactory cf;
 
     @Autowired
-    public ReservationController(ReservationRepository reservationRepository, AdherentRepository adherentRepository,
-                                 OeuvreventeRepository oeuvreventeRepository) {
+    public ReservationController(ReservationRepository reservationRepository, VehiculeRepository vehiculeRepository,
+                                 ClientRepository clientRepository, StationRepository stationRepository, ReservationService reservationService) {
         super(Reservation.class);
         this.reservationRepository = reservationRepository;
-        this.adherentRepository = adherentRepository;
-        this.oeuvreventeRepository = oeuvreventeRepository;
+        this.vehiculeRepository = vehiculeRepository;
+        this.clientRepository = clientRepository;
+        this.stationRepository = stationRepository;
+        this.reservationService = reservationService;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/liste")
@@ -68,21 +71,24 @@ public class ReservationController extends BasicController<Reservation> {
     @RequestMapping(method = RequestMethod.GET, value = "/nouveau")
     public ModelAndView ajouter(HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String, String> queryParameters) throws Exception {
         String destinationPage = ADD;
-        ReservationDTOOld reservationDTOOld = new ReservationDTOOld();
-        listesModifiablesReservation(request, reservationDTOOld);
+        ReservationDTO reservationDTO = new ReservationDTO();
+//        listesModifiablesReservation(request, reservationDTO);
 
 
-        queryParameters.computeIfPresent("idOeuvre", (key, value) -> {
-            reservationDTOOld.setIdOeuvrevente(Integer.parseInt(value));
+        queryParameters.computeIfPresent("idVehicule", (key, value) -> {
+            int idVehicule = Integer.parseInt(value);
+            reservationDTO.setVehicule(vehiculeRepository.getOne(idVehicule));
             return "";
         });
 
-        queryParameters.computeIfPresent("idAdherent", (key, value) -> {
-            reservationDTOOld.setIdAdherent(Integer.parseInt(value));
+        queryParameters.computeIfPresent("idStation", (key, value) -> {
+            int idStation = Integer.parseInt(value);
+            Station station = stationRepository.getOne(idStation);
+            reservationDTO.setStation(station);
             return "";
         });
 
-        request.setAttribute("reservation", reservationDTOOld);
+        request.setAttribute("reservation", reservationDTO);
 
         // FIXME C'est juste pour tester
         reservationDTO.setDateReservation(new Timestamp(new Date().getTime()));
@@ -90,122 +96,33 @@ public class ReservationController extends BasicController<Reservation> {
         return new Layout(destinationPage);
     }
 
-    private void listesModifiablesReservation(HttpServletRequest request, ReservationDTOOld reservationDTOOld) {
-        List<Adherent> listeAdherent;
-        listeAdherent = adherentRepository.findAll();
-        request.setAttribute("listeAdherent", listeAdherent);
-
-        List<Oeuvrevente> listeOeuvrevente;
-        listeOeuvrevente = oeuvreventeRepository.findAll();
-        request.setAttribute("listeOeuvrevente", listeOeuvrevente);
-
-        retrieveError(request);
-
-        Object idAdherent = request.getSession().getAttribute("idAdherent");
-        if(idAdherent != null) {
-            request.getSession().removeAttribute("idAdherent");
-            reservationDTOOld.setIdAdherent((Integer) idAdherent);
-        }
-
-        Object idOeuvre = request.getSession().getAttribute("idOeuvre");
-        if (idOeuvre != null) {
-            request.getSession().removeAttribute("idOeuvre");
-            reservationDTOOld.setIdOeuvrevente((Integer) idOeuvre);
-        }
-
-        Object dateReservation = request.getSession().getAttribute("dateReservation");
-        if (dateReservation != null) {
-            request.getSession().removeAttribute("dateReservation");
-            reservationDTOOld.setDateReservation((Date) dateReservation);
-        }
-    }
-
     @RequestMapping(method = RequestMethod.POST, value = "/insererReservation")
-    public ModelAndView insert(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ReservationDTOOld reservationDTOOld) throws Exception {
+    public ModelAndView insert(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ReservationDTO reservationDTO) throws Exception {
         String destinationPage;
 
         try {
-            updateOrInsert(reservationDTOOld);
+            Exception exceptionAdherent = new Exception("Aucun adhérent sélectionné.");
+            Exception exceptionOeuvre = new Exception("Aucune oeuvre sélectionnée.");
 
-            destinationPage = LIST_RDR;
-        } catch (Exception e) {
-            request.getSession().setAttribute("idAdherent", reservationDTOOld.getIdAdherent());
-            request.getSession().setAttribute("idOeuvre", reservationDTOOld.getIdOeuvrevente());
-            request.getSession().setAttribute("dateReservation", reservationDTOOld.getDateReservation());
-
-            String errorMessage;
-            if(e instanceof DataIntegrityViolationException) {
-                errorMessage = "L'oeuvre est déjà réservée pour cette date.";
-            } else {
-                errorMessage = e.getMessage();
+            if(reservationDTO.getIdClient() == null) {
+                throw exceptionAdherent;
             }
-            request.getSession().setAttribute("erreur", errorMessage);
-            destinationPage = ADD_RDR;
+            if(reservationDTO.getIdVehicule() == null) {
+                throw exceptionOeuvre;
+            }
+
+            // TODO Vérification des informations renseignées
+
+            reservationService.publier(reservationDTO);
+
+            destinationPage = Vues.Vehicules.LIST;
+        } catch (Exception e) { // TODO Gérer les erreurs
+            destinationPage = Vues.Vehicules.LIST_RDR;
         }
 
         return new Layout(destinationPage);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/modifier/{id}")
-    public ModelAndView modifier(HttpServletRequest request, HttpServletResponse response,
-                                @PathVariable int id) throws Exception {
-        ReservationDTOOld reservationDTOOld = reservationRepository.findById(id).orElse(null).toDTO();
-            reservationService.publier(reservationDTO, topic, cf);
-
-        listesModifiablesReservation(request, reservationDTOOld);
-
-        request.setAttribute("reservation", reservationDTOOld);
-
-        return new Layout(UPDATE);
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/modifierReservation")
-    public ModelAndView update(HttpServletRequest request, HttpServletResponse response, @ModelAttribute ReservationDTOOld reservationDTOOld) throws Exception {
-        String destinationPage;
-
-        try {
-            updateOrInsert(reservationDTOOld);
-
-            destinationPage = LIST_RDR;
-        } catch (Exception e) {
-            request.getSession().setAttribute("idAdherent", reservationDTOOld.getIdAdherent());
-            request.getSession().setAttribute("idOeuvre", reservationDTOOld.getIdOeuvrevente());
-            request.getSession().setAttribute("dateReservation", reservationDTOOld.getDateReservation());
-
-            request.getSession().setAttribute("erreur", e.getMessage());
-            destinationPage = UPDATE_RDR + reservationDTOOld.getId();
-        }
-
-        return new Layout(destinationPage);
-    }
-
-    private void updateOrInsert(ReservationDTOOld reservationDTOOld) throws Exception {
-        Exception exceptionAdherent = new Exception("Aucun adhérent sélectionné.");
-        Exception exceptionOeuvre = new Exception("Aucune oeuvre sélectionnée.");
-
-        if(reservationDTOOld.getIdAdherent() == null) {
-            throw exceptionAdherent;
-        }
-        if(reservationDTOOld.getIdOeuvrevente() == null) {
-            throw exceptionOeuvre;
-        }
-
-        Adherent adherent = adherentRepository.findById(reservationDTOOld.getIdAdherent()).orElseThrow(() -> exceptionAdherent);
-
-        Oeuvrevente oeuvre = oeuvreventeRepository.findById(reservationDTOOld.getIdOeuvrevente()).orElseThrow(() -> exceptionOeuvre);
-
-        reservationDTOOld.setAdherent(adherent);
-        reservationDTOOld.setOeuvre(oeuvre);
-
-        // Si on insère, le statut est null
-        if(reservationDTOOld.getStatut() == null || reservationDTOOld.getStatut().isEmpty()) {
-            reservationDTOOld.setStatut(EtatReservationEnum.PENDING.getLabel());
-        }
-
-        Reservation reservation = new Reservation(reservationDTOOld);
-
-        reservationRepository.save(reservation);
-    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/valider/{id}")
     public ModelAndView validate(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) throws Exception {

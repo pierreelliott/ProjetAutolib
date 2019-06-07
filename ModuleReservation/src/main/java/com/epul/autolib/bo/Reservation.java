@@ -26,11 +26,11 @@ public class Reservation {
 
 //    @Id
 //    @Column(name = "client", insertable = false, updatable = false)
-//    public int getClient() {
+//    public int getIdClient() {
 //        return client;
 //    }
 //
-//    public void setClient(int client) {
+//    public void setIdClient(int client) {
 //        this.client = client;
 //    }
 

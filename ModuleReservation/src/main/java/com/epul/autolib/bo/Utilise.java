@@ -27,11 +27,11 @@ public class Utilise {
 
 //    @Id
 //    @Column(name = "Client")
-//    public int getClient() {
+//    public int getIdClient() {
 //        return client;
 //    }
 //
-//    public void setClient(int client) {
+//    public void setIdClient(int client) {
 //        this.client = client;
 //    }
 
