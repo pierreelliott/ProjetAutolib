@@ -19,3 +19,13 @@
 .car-orange {
   color: orange;
 }
+
+.fa {
+  font-size: 2rem;
+}
+
+.badge {
+  position: relative;
+  top: -20px;
+  left: -10px;
+}

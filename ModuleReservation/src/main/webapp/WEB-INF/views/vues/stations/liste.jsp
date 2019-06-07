@@ -31,22 +31,59 @@
 							<td>${item.id}</td>
 							<td>${item.numero} ${item.adresse} ${item.ville}, ${item.codePostal}</td>
 							<td>
-								<a href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
+								<a class="text-decoration-none" href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
 									target="_blank">
 									<i class="fas fa-street-view mr-1"></i>
 										(${item.coordonnees})
 								</a>
 							</td>
 							<td>
-								<i class="fas fa-car car-green" style="color: green;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesLibres }</span>
-								<i class="fas fa-car car-blue" style="color: blue;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesReserves }</span>
-								<i class="fas fa-car car-orange" style="color: orange;"></i><span class="badge badge-pill badge-dark">${ item.nbVehiculesAbsents }</span>
+								<div class="d-flex justify-content-between">
+									<div><i class="fas fa-car text-success" style="font-size: 2rem;"></i><span class="badge badge-pill badge-success position-relative" style="top:-18px;">${ item.nbVehiculesLibres }</span></div>
+									<div><i class="fas fa-car text-primary" style="font-size: 2rem;"></i><span class="badge badge-pill badge-primary position-relative" style="top:-18px;">${ item.nbVehiculesReserves }</span></div>
+									<div><i class="fas fa-car text-warning" style="font-size: 2rem;"></i><span class="badge badge-pill badge-warning position-relative" style="top:-18px;">${ item.nbVehiculesAbsents }</span></div>
+								</div>
 							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
-
 			</table>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item">
+						<c:choose>
+							<c:when test="${currentPage != 1}">
+								<a class="page-link" href="/stations/liste?page=${currentPage - 1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+							</c:when>
+							<c:otherwise>
+								<span class="page-link" aria-hidden="true">&laquo;</span>
+							</c:otherwise>
+						</c:choose>
+					</li>
+
+					<c:forEach begin="1" end="${nbPages}" var="i">
+						<c:choose>
+							<c:when test="${currentPage eq i}">
+								<li class="page-item page-link">${ i }</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link" href="/stations/liste?page=${ i }">${ i }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+
+					<li class="page-item">
+						<c:choose>
+							<c:when test="${currentPage lt nbPages}">
+								<a class="page-link" href="/stations/liste?page=${currentPage + 1}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+							</c:when>
+							<c:otherwise>
+								<span class="page-link" aria-hidden="true">&raquo;</span>
+							</c:otherwise>
+						</c:choose>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</jsp:body>
 </t:layout>

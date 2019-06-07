@@ -5,10 +5,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "borne", schema = "autolib", catalog = "")
-public class Borne {
+public class BorneEntity {
     private int idBorne;
-    private boolean etatBorne;
-    private Station station;
+    private byte etatBorne;
 
     @Id
     @Column(name = "idBorne")
@@ -22,32 +21,21 @@ public class Borne {
 
     @Basic
     @Column(name = "etatBorne")
-    public boolean getEtatBorne() {
+    public byte getEtatBorne() {
         return etatBorne;
     }
 
-    public void setEtatBorne(boolean etatBorne) {
+    public void setEtatBorne(byte etatBorne) {
         this.etatBorne = etatBorne;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "station", referencedColumnName = "id")
-    public Station getStation() {
-        return station;
-    }
-
-    public void setStation(Station station) {
-        this.station = station;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Borne that = (Borne) o;
+        BorneEntity that = (BorneEntity) o;
         return idBorne == that.idBorne &&
-                etatBorne == that.etatBorne &&
-                Objects.equals(station, that.station);
+                etatBorne == that.etatBorne;
     }
 
     @Override

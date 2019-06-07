@@ -1,4 +1,4 @@
-package com.epul.autolib.bo;
+package metier;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -6,13 +6,13 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "reservation", schema = "autolib", catalog = "")
-@IdClass(ReservationPK.class)
-public class Reservation {
+@IdClass(ReservationEntityPK.class)
+public class ReservationEntity {
     private int vehicule;
-//    private int client;
+    private int client;
     private Timestamp dateReservation;
     private Timestamp dateEcheance;
-    private Client client;
+    private ClientEntity clientByClient;
 
     @Id
     @Column(name = "vehicule")
@@ -24,15 +24,15 @@ public class Reservation {
         this.vehicule = vehicule;
     }
 
-//    @Id
-//    @Column(name = "client", insertable = false, updatable = false)
-//    public int getClient() {
-//        return client;
-//    }
-//
-//    public void setClient(int client) {
-//        this.client = client;
-//    }
+    @Id
+    @Column(name = "client")
+    public int getClient() {
+        return client;
+    }
+
+    public void setClient(int client) {
+        this.client = client;
+    }
 
     @Id
     @Column(name = "date_reservation")
@@ -58,9 +58,9 @@ public class Reservation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Reservation that = (Reservation) o;
+        ReservationEntity that = (ReservationEntity) o;
         return vehicule == that.vehicule &&
-//                client == that.client &&
+                client == that.client &&
                 Objects.equals(dateReservation, that.dateReservation) &&
                 Objects.equals(dateEcheance, that.dateEcheance);
     }
@@ -72,11 +72,11 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "client", referencedColumnName = "idClient", nullable = false)
-    public Client getClient() {
-        return client;
+    public ClientEntity getClientByClient() {
+        return clientByClient;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientByClient(ClientEntity clientByClient) {
+        this.clientByClient = clientByClient;
     }
 }
