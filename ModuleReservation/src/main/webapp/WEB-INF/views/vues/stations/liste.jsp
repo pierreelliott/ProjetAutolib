@@ -38,14 +38,15 @@
 								</a>
 							</td>
 							<td>
-								<i class="fas fa-car text-success"></i><span class="badge badge-pill badge-success">${ item.nbVehiculesLibres }</span>
-								<i class="fas fa-car text-primary"></i><span class="badge badge-pill badge-primary">${ item.nbVehiculesReserves }</span>
-								<i class="fas fa-car text-warning"></i><span class="badge badge-pill badge-warning">${ item.nbVehiculesAbsents }</span>
+								<div class="d-flex justify-content-between">
+									<div><i class="fas fa-car text-success" style="font-size: 2rem;"></i><span class="badge badge-pill badge-success position-relative" style="top:-18px;">${ item.nbVehiculesLibres }</span></div>
+									<div><i class="fas fa-car text-primary" style="font-size: 2rem;"></i><span class="badge badge-pill badge-primary position-relative" style="top:-18px;">${ item.nbVehiculesReserves }</span></div>
+									<div><i class="fas fa-car text-warning" style="font-size: 2rem;"></i><span class="badge badge-pill badge-warning position-relative" style="top:-18px;">${ item.nbVehiculesAbsents }</span></div>
+								</div>
 							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
-
 			</table>
 		</div>
 	</jsp:body>
