@@ -1,11 +1,11 @@
-package metier;
+package com.epul.autolib.bo;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "type_vehicule", schema = "autolib", catalog = "")
-public class TypeVehiculeEntity {
+public class TypeVehicule {
     private int idTypeVehicule;
     private String categorie;
     private String typeVehicule;
@@ -44,7 +44,7 @@ public class TypeVehiculeEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TypeVehiculeEntity that = (TypeVehiculeEntity) o;
+        TypeVehicule that = (TypeVehicule) o;
         return idTypeVehicule == that.idTypeVehicule &&
                 Objects.equals(categorie, that.categorie) &&
                 Objects.equals(typeVehicule, that.typeVehicule);

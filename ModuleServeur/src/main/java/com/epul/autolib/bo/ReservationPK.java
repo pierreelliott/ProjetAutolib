@@ -1,4 +1,4 @@
-package metier;
+package com.epul.autolib.bo;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class ReservationEntityPK implements Serializable {
+public class ReservationPK implements Serializable {
     private int vehicule;
     private int client;
     private Timestamp dateReservation;
@@ -45,7 +45,7 @@ public class ReservationEntityPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReservationEntityPK that = (ReservationEntityPK) o;
+        ReservationPK that = (ReservationPK) o;
         return vehicule == that.vehicule &&
                 client == that.client &&
                 Objects.equals(dateReservation, that.dateReservation);

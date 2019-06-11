@@ -1,8 +1,8 @@
 package service;
 
+import com.epul.autolib.bo.Reservation;
 import meserreurs.MonException;
 import javax.persistence.*;
-import metier.ReservationEntity;
 
 public class EnregistreReservation {
 
@@ -10,7 +10,7 @@ public class EnregistreReservation {
     private EntityManagerFactory factory;
     private  EntityManager entityManager;
 
-    public  void insertionReservation(ReservationEntity reservation) throws Exception, MonException {
+    public  void insertionReservation(Reservation reservation) throws Exception, MonException {
 
        // On instancie l'entity Manager
         factory = Persistence.createEntityManagerFactory("PReservation");

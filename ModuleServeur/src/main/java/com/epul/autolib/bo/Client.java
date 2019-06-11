@@ -1,4 +1,4 @@
-package metier;
+package com.epul.autolib.bo;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "client", schema = "autolib", catalog = "")
-public class ClientEntity {
+public class Client {
     private int idClient;
     private String nom;
     private String prenom;
@@ -56,7 +56,7 @@ public class ClientEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ClientEntity that = (ClientEntity) o;
+        Client that = (Client) o;
         return idClient == that.idClient &&
                 Objects.equals(nom, that.nom) &&
                 Objects.equals(prenom, that.prenom) &&

@@ -1,28 +1,30 @@
-package metier;
+package com.epul.autolib.bo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "station", schema = "autolib", catalog = "")
-public class StationEntity {
-    private int idStation;
+public class Station {
+    private int id;
     private BigDecimal latitude;
     private BigDecimal longitude;
     private String adresse;
     private Integer numero;
     private String ville;
     private Integer codePostal;
+    private Collection<Borne> bornes;
 
     @Id
-    @Column(name = "idStation")
-    public int getIdStation() {
-        return idStation;
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public void setIdStation(int idStation) {
-        this.idStation = idStation;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
@@ -85,12 +87,21 @@ public class StationEntity {
         this.codePostal = codePostal;
     }
 
+    @OneToMany(mappedBy = "station")
+    public Collection<Borne> getBornes() {
+        return bornes;
+    }
+
+    public void setBornes(Collection<Borne> bornes) {
+        this.bornes = bornes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StationEntity that = (StationEntity) o;
-        return idStation == that.idStation &&
+        Station that = (Station) o;
+        return id == that.id &&
                 Objects.equals(latitude, that.latitude) &&
                 Objects.equals(longitude, that.longitude) &&
                 Objects.equals(adresse, that.adresse) &&
@@ -101,6 +112,27 @@ public class StationEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idStation, latitude, longitude, adresse, numero, ville, codePostal);
+        return Objects.hash(id, latitude, longitude, adresse, numero, ville, codePostal);
+    }
+
+    @Transient
+    public String getCoordonnees() {
+        return latitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° N, "
+                + longitude.setScale(2, BigDecimal.ROUND_HALF_EVEN) + "° O";
+    }
+
+    @Transient
+    public int getNbVehiculesLibres() {
+        return (int) bornes.stream().filter(borne -> !borne.getEtatBorne()).filter(borne -> borne.getVehicule().getDisponibilite().equals("LIBRE")).count();
+    }
+
+    @Transient
+    public int getNbVehiculesReserves() {
+        return (int) bornes.stream().filter(borne -> !borne.getEtatBorne()).filter(borne -> !borne.getVehicule().getDisponibilite().equals("LIBRE")).count();
+    }
+
+    @Transient
+    public int getNbVehiculesAbsents() {
+        return (int) bornes.stream().filter(borne -> borne.getEtatBorne()).count();
     }
 }

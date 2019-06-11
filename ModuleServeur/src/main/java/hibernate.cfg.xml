@@ -6,13 +6,13 @@
     <session-factory>
         <property name="connection.url">jdbc:mysql://localhost:3306/autolib</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <mapping class="metier.BorneEntity"/>
-        <mapping class="metier.ClientEntity"/>
-        <mapping class="metier.ReservationEntity"/>
-        <mapping class="metier.StationEntity"/>
-        <mapping class="metier.TypeVehiculeEntity"/>
-        <mapping class="metier.UtiliseEntity"/>
-        <mapping class="metier.VehiculeEntity"/>
+        <mapping class="com.epul.autolib.bo.Borne"/>
+        <mapping class="com.epul.autolib.bo.Client"/>
+        <mapping class="com.epul.autolib.bo.Reservation"/>
+        <mapping class="com.epul.autolib.bo.Station"/>
+        <mapping class="com.epul.autolib.bo.TypeVehicule"/>
+        <mapping class="com.epul.autolib.bo.Utilise"/>
+        <mapping class="com.epul.autolib.bo.Vehicule"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 
