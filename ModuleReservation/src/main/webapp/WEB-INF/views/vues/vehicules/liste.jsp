@@ -24,6 +24,7 @@
 						<th>Disponibilité</th>
 						<th>Coordonnées</th>
 						<th>Type de véhicule</th>
+						<th></th>
 					</tr>
 				</thead>
 
@@ -42,6 +43,11 @@
 								</a>
 							</td>
 							<td>${item.typeVehicule.typeVehicule}</td>
+							<td>
+								<a href="<c:url value="/reservations/nouveau?idVehicule=${item.idVehicule}"/>">
+									<i class="fas fa-check" title="Réserver"></i>
+								</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

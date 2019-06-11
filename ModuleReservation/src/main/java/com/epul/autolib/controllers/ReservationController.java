@@ -77,6 +77,7 @@ public class ReservationController extends BasicController<Reservation> {
 
         queryParameters.computeIfPresent("idVehicule", (key, value) -> {
             int idVehicule = Integer.parseInt(value);
+            reservationDTO.setIdVehicule(idVehicule);
             reservationDTO.setVehicule(vehiculeRepository.getOne(idVehicule));
             return "";
         });
@@ -87,6 +88,8 @@ public class ReservationController extends BasicController<Reservation> {
             reservationDTO.setStation(station);
             return "";
         });
+
+        reservationDTO.setIdClient(1); // FIXME Récupérer depuis la session
 
         request.setAttribute("reservation", reservationDTO);
 
@@ -101,14 +104,14 @@ public class ReservationController extends BasicController<Reservation> {
         String destinationPage;
 
         try {
-            Exception exceptionAdherent = new Exception("Aucun adhérent sélectionné.");
-            Exception exceptionOeuvre = new Exception("Aucune oeuvre sélectionnée.");
+            Exception exceptionClient = new Exception("Aucun client sélectionné.");
+            Exception exceptionVehicule = new Exception("Aucune véhicule sélectionnée.");
 
             if(reservationDTO.getIdClient() == null) {
-                throw exceptionAdherent;
+                throw exceptionClient;
             }
             if(reservationDTO.getIdVehicule() == null) {
-                throw exceptionOeuvre;
+                throw exceptionVehicule;
             }
 
             // TODO Vérification des informations renseignées

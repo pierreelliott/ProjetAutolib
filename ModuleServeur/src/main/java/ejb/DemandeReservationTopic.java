@@ -70,6 +70,8 @@ public class DemandeReservationTopic implements MessageListener {
                     reservationEntity.setVehicule(reservation.getIdVehicule());
                     reservationEntity.setDateEcheance(reservation.getDateEcheance());
                     reservationEntity.setDateReservation(reservation.getDateReservation());
+                    // TODO Il faut correctement renseigner toutes les propriétés nécessaires
+                    // Càd, il faut rechercher le Client correspondant à l'idClient
 
                     EnregistreReservation uneE = new EnregistreReservation();
                     uneE.insertionReservation(reservationEntity);

@@ -24,6 +24,11 @@ public class ReservationService {
         boolean ok = true;
         TopicConnection connection = null;
 
+        // TODO Méthode pour nettoyer le DTO des objets non sérialisables
+        reservationDTO.setVehicule(null);
+        reservationDTO.setClient(null);
+        reservationDTO.setStation(null);
+
         try {
 
             // On crée la connexion JMS , session, producteur et message;
