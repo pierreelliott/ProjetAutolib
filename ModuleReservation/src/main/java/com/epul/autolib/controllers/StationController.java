@@ -59,7 +59,7 @@ public class StationController extends BasicController<Station> {
     public ModelAndView carteStations(HttpServletRequest request) {
         List<Station> stations = stationRepository.findAll();
 
-        request.setAttribute("listeStation", stations);
+        request.setAttribute("stations", stations);
 
         return new ModelAndView(Vues.Stations.CARTE);
     }
