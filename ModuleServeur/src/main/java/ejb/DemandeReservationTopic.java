@@ -62,19 +62,10 @@ public class DemandeReservationTopic implements MessageListener {
                 // on s'assure que l'écriture ne se fera qu'une fois.
                 message = null;
                 try {
-                    // on construit un objet Entity
-                    Reservation reservationEntity = new Reservation();
 
-                    // on tansfère les données reçues dans l'objet Entity
-                    reservationEntity.setClient(reservation.getClient());
-                    reservationEntity.setVehicule(reservation.getIdVehicule());
-                    reservationEntity.setDateEcheance(reservation.getDateEcheance());
-                    reservationEntity.setDateReservation(reservation.getDateReservation());
-                    // TODO Il faut correctement renseigner toutes les propriétés nécessaires
-                    // Càd, il faut rechercher le Client correspondant à l'idClient
 
                     EnregistreReservation uneE = new EnregistreReservation();
-                    uneE.insertionReservation(reservationEntity);
+                    uneE.insertionReservation(reservation);
                 } catch (NamingException er) {
                     printError(er.getMessage());
                 } catch (MonException e) {

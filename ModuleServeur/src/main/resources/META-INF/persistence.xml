@@ -2,7 +2,15 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="PReservation">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>metier.InscriptionEntity</class>
+        <class>com.epul.autolib.bo.Client</class>
+        <class>com.epul.autolib.bo.Reservation</class>
+        <class>com.epul.autolib.bo.Vehicule</class>
+        <class>com.epul.autolib.bo.Station</class>
+        <class>com.epul.autolib.bo.Borne</class>
+        <class>com.epul.autolib.bo.ReservationPK</class>
+        <class>com.epul.autolib.bo.TypeVehicule</class>
+        <class>com.epul.autolib.bo.Utilise</class>
+        <class>com.epul.autolib.bo.UtilisePK</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/autolib"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
