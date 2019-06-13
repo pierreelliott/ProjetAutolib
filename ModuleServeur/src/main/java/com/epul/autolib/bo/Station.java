@@ -1,13 +1,14 @@
 package com.epul.autolib.bo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "station", schema = "autolib", catalog = "")
-public class Station {
+public class Station implements Serializable {
     private int id;
     private BigDecimal latitude;
     private BigDecimal longitude;

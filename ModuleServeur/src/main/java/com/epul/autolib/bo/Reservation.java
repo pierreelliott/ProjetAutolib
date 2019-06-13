@@ -1,40 +1,41 @@
 package com.epul.autolib.bo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "reservation", schema = "autolib", catalog = "")
-@IdClass(ReservationPK.class)
-public class Reservation {
-    private int vehicule;
+//@IdClass(ReservationPK.class)
+public class Reservation implements Serializable {
+    private int id;
+//    private int vehicule;
 //    private int client;
     private Timestamp dateReservation;
     private Timestamp dateEcheance;
     private Client client;
+    private Vehicule vehicule;
 
     @Id
-    @Column(name = "vehicule")
-    public int getVehicule() {
-        return vehicule;
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public void setVehicule(int vehicule) {
-        this.vehicule = vehicule;
+    public void setId(int id) {
+        this.id = id;
     }
 
-//    @Id
-//    @Column(name = "client", insertable = false, updatable = false)
-//    public int getIdClient() {
-//        return client;
+//    @Column(name = "vehicule")
+//    public int getVehicule() {
+//        return vehicule;
 //    }
 //
-//    public void setIdClient(int client) {
-//        this.client = client;
+//    public void setVehicule(int vehicule) {
+//        this.vehicule = vehicule;
 //    }
 
-    @Id
     @Column(name = "date_reservation")
     public Timestamp getDateReservation() {
         return dateReservation;
@@ -59,10 +60,11 @@ public class Reservation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return vehicule == that.vehicule &&
-//                client == that.client &&
+        return id == that.id &&
                 Objects.equals(dateReservation, that.dateReservation) &&
-                Objects.equals(dateEcheance, that.dateEcheance);
+                Objects.equals(dateEcheance, that.dateEcheance) &&
+                Objects.equals(client, that.client) &&
+                Objects.equals(vehicule, that.vehicule);
     }
 
     @Override
@@ -78,5 +80,15 @@ public class Reservation {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "vehicule", referencedColumnName = "idVehicule", nullable = false)
+    public Vehicule getVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(Vehicule vehiculeObject) {
+        this.vehicule = vehiculeObject;
     }
 }

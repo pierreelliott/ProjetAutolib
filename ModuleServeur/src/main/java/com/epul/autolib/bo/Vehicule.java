@@ -1,12 +1,13 @@
 package com.epul.autolib.bo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
 @Table(name = "vehicule", schema = "autolib", catalog = "")
-public class Vehicule {
+public class Vehicule implements Serializable {
     private int idVehicule;
     private int rfid;
     private Integer etatBatterie;

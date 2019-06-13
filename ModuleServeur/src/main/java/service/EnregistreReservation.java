@@ -2,6 +2,7 @@ package service;
 
 import com.epul.autolib.bo.Client;
 import com.epul.autolib.bo.Reservation;
+import com.epul.autolib.bo.Vehicule;
 import com.epul.autolib.dto.ReservationDTO;
 import meserreurs.MonException;
 import javax.persistence.*;
@@ -23,17 +24,14 @@ public class EnregistreReservation {
             Reservation reservationEntity = new Reservation();
 
             // on tansfère les données reçues dans l'objet Entity
-            reservationEntity.setVehicule(reservation.getIdVehicule());
             reservationEntity.setDateEcheance(reservation.getDateEcheance());
             reservationEntity.setDateReservation(reservation.getDateReservation());
 
-            Client client = new Client();
-            client.setIdClient(reservation.getIdClient());
-            client = entityManager.find(Client.class, client);
+            Client client = entityManager.find(Client.class, reservation.getIdClient());
             reservationEntity.setClient(client);
-            // FIXME EntityManager râle comme quoi il arrive pas à trouver le "persister" de Client
-            // -> Idée : Passer en Springboot
-            // -> Ou : Utiliser les Query d'Hibernate (mais ça pue la merde)
+
+            Vehicule vehicule = entityManager.find(Vehicule.class, reservation.getIdVehicule());
+            reservationEntity.setVehicule(vehicule);
 
             if (!entityManager.contains(reservationEntity)) {
                 // On démarre une transaction

@@ -1,13 +1,14 @@
 package com.epul.autolib.bo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "utilise", schema = "autolib", catalog = "")
 @IdClass(UtilisePK.class)
-public class Utilise {
+public class Utilise implements Serializable {
     private int vehicule;
 //    private int client;
     private Timestamp date;

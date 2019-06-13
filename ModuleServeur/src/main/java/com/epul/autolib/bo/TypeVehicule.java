@@ -1,11 +1,12 @@
 package com.epul.autolib.bo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "type_vehicule", schema = "autolib", catalog = "")
-public class TypeVehicule {
+public class TypeVehicule implements Serializable {
     private int idTypeVehicule;
     private String categorie;
     private String typeVehicule;
