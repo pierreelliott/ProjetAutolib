@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 06 Juin 2019 à 15:19
+-- Généré le :  Jeu 13 Juin 2019 à 18:57
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -645,6 +645,7 @@ INSERT INTO `client` (`idClient`, `nom`, `prenom`, `date_naissance`, `login`, `p
 --
 
 CREATE TABLE `reservation` (
+  `id` int(10) NOT NULL,
   `vehicule` int(11) NOT NULL,
   `client` int(11) NOT NULL,
   `date_reservation` datetime NOT NULL,
@@ -655,11 +656,12 @@ CREATE TABLE `reservation` (
 -- Contenu de la table `reservation`
 --
 
-INSERT INTO `reservation` (`vehicule`, `client`, `date_reservation`, `date_echeance`) VALUES
-(1, 1, '2016-01-06 00:00:00', '2016-01-15 00:00:00'),
-(1, 1, '2016-01-07 00:00:00', '2016-01-15 00:00:00'),
-(2, 1, '2016-01-13 00:00:00', '2016-01-21 00:00:00'),
-(3, 2, '2016-01-13 00:00:00', '2016-01-14 00:00:00');
+INSERT INTO `reservation` (`id`, `vehicule`, `client`, `date_reservation`, `date_echeance`) VALUES
+(1, 1, 1, '2016-01-06 00:00:00', '2016-01-15 00:00:00'),
+(2, 1, 1, '2016-01-07 00:00:00', '2016-01-15 00:00:00'),
+(3, 2, 1, '2016-01-13 00:00:00', '2016-01-21 00:00:00'),
+(4, 3, 2, '2016-01-13 00:00:00', '2016-01-14 00:00:00'),
+(5, 5, 1, '2019-06-13 20:53:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -899,7 +901,9 @@ ALTER TABLE `client`
 -- Index pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`vehicule`,`client`,`date_reservation`),
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `vehicule` (`vehicule`,`client`,`date_reservation`),
+  ADD UNIQUE KEY `vehicule_2` (`vehicule`,`client`,`date_reservation`),
   ADD KEY `fk_Reservation_Vehicule1_idx` (`vehicule`),
   ADD KEY `fk_Reservation_Client1_idx` (`client`);
 
@@ -946,6 +950,11 @@ ALTER TABLE `borne`
 --
 ALTER TABLE `client`
   MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
+--
+-- AUTO_INCREMENT pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `station`
 --
