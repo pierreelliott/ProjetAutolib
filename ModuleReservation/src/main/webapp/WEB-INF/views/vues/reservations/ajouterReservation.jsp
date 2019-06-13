@@ -4,7 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:layout>
-    <jsp:attribute name="title">Médiathèque de Polytech - Réserver</jsp:attribute>
+    <jsp:attribute name="title">Autolib - Réserver</jsp:attribute>
     <jsp:body>
         <div class="jumbotron text-center">
             <h1>Nouvelle réservation</h1>

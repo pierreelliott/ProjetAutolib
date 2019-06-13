@@ -22,6 +22,7 @@
 						<th>Adresse</th>
 						<th>Coordonnées</th>
 						<th>Bornes</th>
+						<th>Réserver</th>
 					</tr>
 				</thead>
 
@@ -43,6 +44,19 @@
 									<div><i class="fas fa-car text-primary" style="font-size: 2rem;"></i><span class="badge badge-pill badge-primary position-relative" style="top:-18px;">${ item.nbVehiculesReserves }</span></div>
 									<div><i class="fas fa-car text-warning" style="font-size: 2rem;"></i><span class="badge badge-pill badge-warning position-relative" style="top:-18px;">${ item.nbVehiculesAbsents }</span></div>
 								</div>
+							</td>
+							<td>
+								<c:if test="${item.nbVehiculesLibres > 0}">
+									<a class="btn btn-success" href="<c:url value="/reservations/nouveau"/>"
+									   title="Réserver un véhicule">
+										<i class="far fa-calendar-check"></i>
+									</a>
+								</c:if>
+								<c:if test="${item.nbVehiculesLibres == 0}">
+									<button class="btn btn-success disabled" title="Aucun véhicule disponible !">
+										<i class="far fa-calendar-check"></i>
+									</button>
+								</c:if>
 							</td>
 						</tr>
 					</c:forEach>

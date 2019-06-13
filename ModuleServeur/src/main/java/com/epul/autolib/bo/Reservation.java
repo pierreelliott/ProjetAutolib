@@ -7,11 +7,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "reservation", schema = "autolib", catalog = "")
-//@IdClass(ReservationPK.class)
 public class Reservation implements Serializable {
     private int id;
-//    private int vehicule;
-//    private int client;
     private Timestamp dateReservation;
     private Timestamp dateEcheance;
     private Client client;
@@ -26,15 +23,6 @@ public class Reservation implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-
-//    @Column(name = "vehicule")
-//    public int getVehicule() {
-//        return vehicule;
-//    }
-//
-//    public void setVehicule(int vehicule) {
-//        this.vehicule = vehicule;
-//    }
 
     @Column(name = "date_reservation")
     public Timestamp getDateReservation() {
