@@ -68,18 +68,15 @@ public class ReservationController extends BasicController<Reservation> {
         return new Layout(destinationPage);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/nouveau")
-    public ModelAndView ajouter(HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String, String> queryParameters) throws Exception {
+    @RequestMapping(method = RequestMethod.GET, value = "/nouveau/{idVehicule}")
+    public ModelAndView ajouter(HttpServletRequest request, HttpServletResponse response, @PathVariable int idVehicule,
+                                @RequestParam Map<String, String> queryParameters) throws Exception {
         ReservationDTO reservationDTO = new ReservationDTO();
 //        listesModifiablesReservation(request, reservationDTO);
 
 
-        queryParameters.computeIfPresent("idVehicule", (key, value) -> {
-            int idVehicule = Integer.parseInt(value);
-            reservationDTO.setIdVehicule(idVehicule);
-            reservationDTO.setVehicule(vehiculeRepository.getOne(idVehicule));
-            return "";
-        });
+        reservationDTO.setIdVehicule(idVehicule);
+        reservationDTO.setVehicule(vehiculeRepository.getOne(idVehicule));
 
         queryParameters.computeIfPresent("idStation", (key, value) -> {
             int idStation = Integer.parseInt(value);

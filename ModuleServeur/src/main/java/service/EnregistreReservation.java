@@ -5,6 +5,8 @@ import com.epul.autolib.bo.Reservation;
 import com.epul.autolib.bo.Vehicule;
 import com.epul.autolib.dto.ReservationDTO;
 import meserreurs.MonException;
+import utils.EtatVehiculeEnum;
+
 import javax.persistence.*;
 
 public class EnregistreReservation {
@@ -21,33 +23,57 @@ public class EnregistreReservation {
 
         try {
             // on construit un objet Entity
-            Reservation reservationEntity = new Reservation();
+            Reservation reservationEntity = createEntityFromDTO(reservation);
 
-            // on tansfère les données reçues dans l'objet Entity
-            reservationEntity.setDateEcheance(reservation.getDateEcheance());
-            reservationEntity.setDateReservation(reservation.getDateReservation());
+            doInsert(reservationEntity);
+            updateVehicule(reservationEntity);
 
-            Client client = entityManager.find(Client.class, reservation.getIdClient());
-            reservationEntity.setClient(client);
-
-            Vehicule vehicule = entityManager.find(Vehicule.class, reservation.getIdVehicule());
-            reservationEntity.setVehicule(vehicule);
-
-            if (!entityManager.contains(reservationEntity)) {
-                // On démarre une transaction
-                entityManager.getTransaction().begin();
-                entityManager.persist(reservationEntity);
-                entityManager.flush();
-                // on valide la transaction
-                entityManager.getTransaction().commit();
-            }
             entityManager.close();
 
         } catch (EntityNotFoundException h) {
-            new MonException("Erreur d'insertion", h.getMessage());
+            throw new MonException("Erreur d'insertion", h.getMessage());
         } catch (Exception e) {
-            new MonException("Erreur d'insertion", e.getMessage());
+            throw new MonException("Erreur d'insertion", e.getMessage());
         }
+    }
+
+    private Reservation createEntityFromDTO(ReservationDTO reservationDTO) {
+        Reservation reservationEntity = new Reservation();
+
+        // on tansfère les données reçues dans l'objet Entity
+        reservationEntity.setDateEcheance(reservationDTO.getDateEcheance());
+        reservationEntity.setDateReservation(reservationDTO.getDateReservation());
+
+        Client client = entityManager.find(Client.class, reservationDTO.getIdClient());
+        reservationEntity.setClient(client);
+
+        Vehicule vehicule = entityManager.find(Vehicule.class, reservationDTO.getIdVehicule());
+        reservationEntity.setVehicule(vehicule);
+
+        return reservationEntity;
+    }
+
+    private void doInsert(Reservation reservation) {
+        if (!entityManager.contains(reservation)) {
+            // On démarre une transaction
+            entityManager.getTransaction().begin();
+            entityManager.persist(reservation);
+            entityManager.flush();
+            // on valide la transaction
+            entityManager.getTransaction().commit();
+        }
+    }
+
+    private void updateVehicule(Reservation reservation) {
+        // Update disponibilité du véhicule
+        Vehicule vehicule = reservation.getVehicule();
+        vehicule.setDisponibilite(EtatVehiculeEnum.RESERVE.name());
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(vehicule);
+        entityManager.flush();
+        // on valide la transaction
+        entityManager.getTransaction().commit();
     }
 }
 

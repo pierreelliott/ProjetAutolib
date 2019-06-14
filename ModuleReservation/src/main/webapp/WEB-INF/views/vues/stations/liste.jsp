@@ -3,6 +3,8 @@
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
+<%--@elvariable id="listeStation" type="java.util.List<com.epul.autolib.bo.Station>"--%>
+
 <t:layout>
 	<jsp:attribute name="title">Autolib' - Liste des stations</jsp:attribute>
 	<jsp:body>
@@ -47,7 +49,7 @@
 							</td>
 							<td>
 								<c:if test="${item.nbVehiculesLibres > 0}">
-									<a class="btn btn-success" href="<c:url value="/reservations/nouveau"/>"
+									<a class="btn btn-success" href="<c:url value="/stations/${item.id}"/>"
 									   title="Réserver un véhicule">
 										<i class="far fa-calendar-check"></i>
 									</a>
