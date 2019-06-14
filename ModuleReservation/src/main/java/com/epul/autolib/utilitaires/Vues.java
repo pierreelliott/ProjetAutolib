@@ -10,6 +10,7 @@ public class Vues {
     public static class Stations {
         public static final String LIST = "vues/stations/liste";
         public static final String CARTE = "vues/stations/carte";
+        public static final String AFFICHER = "vues/stations/afficher";
     }
 
     public static class Vehicules {
