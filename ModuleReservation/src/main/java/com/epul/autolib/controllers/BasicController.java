@@ -14,6 +14,10 @@ public class BasicController<T> {
         Object error = request.getSession().getAttribute("erreur");
         request.getSession().removeAttribute("erreur");
         request.setAttribute("erreur", error);
+
+        Object message = request.getSession().getAttribute("message");
+        request.getSession().removeAttribute("message");
+        request.setAttribute("message", message);
         return error;
     }
 }

@@ -1,5 +1,6 @@
 package com.epul.autolib.controllers;
 
+import com.epul.autolib.bo.Client;
 import com.epul.autolib.bo.Reservation;
 import com.epul.autolib.bo.Station;
 import com.epul.autolib.bo.Utilise;
@@ -74,6 +75,13 @@ public class ReservationController extends BasicController<Reservation> {
         ReservationDTO reservationDTO = new ReservationDTO();
 //        listesModifiablesReservation(request, reservationDTO);
 
+        int idClient = (Integer) request.getSession().getAttribute("id");
+        List<Utilise> utilisations = utiliseRepository.findAllByClient_IdClientAndBorneArriveeIsNull(idClient);
+        if(utilisations.size() > 0) { // Empêche la réservation de plusieurs véhicules
+            request.getSession().setAttribute("erreur", "Vous ne pouvez pas réserver un nouveau véhicule tant que vous n'avez pas déposé l'ancien.");
+
+            return new Layout(Vues.Reservations.LIST_RDR);
+        }
 
         reservationDTO.setIdVehicule(idVehicule);
         reservationDTO.setVehicule(vehiculeRepository.getOne(idVehicule));
@@ -85,7 +93,6 @@ public class ReservationController extends BasicController<Reservation> {
             return "";
         });
 
-        Integer idClient = (Integer) request.getSession().getAttribute("id");
         reservationDTO.setIdClient(idClient);
 
         request.setAttribute("reservation", reservationDTO);
@@ -95,6 +102,9 @@ public class ReservationController extends BasicController<Reservation> {
         reservationDTO.setDateEcheance(Utils.localDateTimeToTimestamp(date.plusMinutes(90)));
 
         insert(request, response, reservationDTO);
+
+        request.getSession().setAttribute("message", "L'enregistrement de la réservation peut prendre quelques instants, n'hésitez pas à recharger la page.");
+
         return new Layout(Vues.Reservations.LIST_RDR);
     }
 

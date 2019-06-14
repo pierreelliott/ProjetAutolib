@@ -125,6 +125,6 @@ public class VehiculeController extends BasicController<Station> {
             }
         }
 
-        return new ModelAndView(Vues.Reservations.LIST);
+        return new ModelAndView(Vues.Reservations.LIST_RDR);
     }
 }
