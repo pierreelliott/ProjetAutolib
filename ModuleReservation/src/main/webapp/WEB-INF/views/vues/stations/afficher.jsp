@@ -52,9 +52,9 @@
                                     Aucun véhicule libre sur cette borne
                                 </td>
                                 <td>
-                                    <c:if test="${sessionScope.id > 0}">
-                                        <a class="btn btn-primary" href="<c:url value="/vehicules/depot/${item.vehicule.idVehicule}"/>"
-                                           title="Réserver un véhicule">
+                                    <c:if test="${sessionScope.id > 0 and utiliseVoiture}">
+                                        <a class="btn btn-primary" href="<c:url value="/vehicules/depot/${item.vehicule.idVehicule}/${item.idBorne}"/>"
+                                           title="Déposer un véhicule">
                                             <i class="far fa-calendar-check"></i>
                                             Déposer
                                         </a>

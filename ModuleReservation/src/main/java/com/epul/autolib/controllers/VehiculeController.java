@@ -125,6 +125,31 @@ public class VehiculeController extends BasicController<Station> {
             }
         }
 
-        return new ModelAndView(Vues.Reservations.LIST_RDR);
+        return new ModelAndView(Vues.Reservations.LIST);
+    }
+
+    @RequestMapping(value = "/deposer/{idVehicule}/{idBorne}")
+    public ModelAndView deposerVehicule(HttpServletRequest request, @PathVariable int idVehicule, @PathVariable int idBorne) {
+        Vehicule vehicule = vehiculeRepository.findById(idVehicule).orElse(null);
+        Borne borne = borneRepository.findById(idBorne).get();
+        Client client = clientRepository.findById((Integer) request.getSession().getAttribute("id")).get();
+
+        if (vehicule != null) {
+            // Changer la borne d'arrivée pour l'utilisation
+            Utilise utilisation = utiliseRepository.findAllByClient_IdClientAndBorneArriveeIsNull(client.getIdClient()).get(0);
+            utilisation.setBorneArrivee(borne);
+            utiliseRepository.save(utilisation);
+
+            // changer la disponibilité du véhicule
+            vehicule.setDisponibilite(EtatVehiculeEnum.LIBRE.name());
+            vehiculeRepository.save(vehicule);
+
+            // l'ajouter à la borne
+            borne.setEtatBorne(!borne.getEtatBorne());
+            borne.setVehicule(vehicule);
+            borneRepository.save(borne);
+        }
+
+        return new ModelAndView(Vues.Reservations.LIST);
     }
 }
