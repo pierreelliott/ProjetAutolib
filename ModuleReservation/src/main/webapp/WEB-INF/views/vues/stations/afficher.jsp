@@ -22,7 +22,11 @@
                 <div>
                     <c:choose>
                         <c:when test="${item.vehicule != null}">
-                            <i class="fas fa-car" style="font-size: 2rem;"></i>
+                            <c:set value="text-success" var="colorClass"/>
+                            <c:if test="${item.vehicule.disponibilite != 'LIBRE'}">
+                                <c:set value="text-primary" var="colorClass"/>
+                            </c:if>
+                            <i class="fas fa-car ${colorClass}" style="font-size: 2rem;"></i>
                             ${item.vehicule.typeVehicule.typeVehicule} (${item.vehicule.etatBatterie}% batterie)
                             <a class="btn btn-success" href="<c:url value="/reservations/nouveau"/>"
                                title="Réserver un véhicule">
@@ -31,6 +35,7 @@
                             </a>
                         </c:when>
                         <c:otherwise>
+                            <i class="fas fa-car text-warning" style="font-size: 2rem;"></i>
                             Aucun véhicule libre sur cette borne
                         </c:otherwise>
                     </c:choose>
