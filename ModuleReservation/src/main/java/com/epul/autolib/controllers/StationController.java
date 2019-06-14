@@ -1,6 +1,7 @@
 package com.epul.autolib.controllers;
 
 import com.epul.autolib.bo.Station;
+import com.epul.autolib.bo.Utilise;
 import com.epul.autolib.repositories.StationRepository;
 import com.epul.autolib.repositories.UtiliseRepository;
 import com.epul.autolib.utilitaires.Vues;
@@ -78,6 +79,11 @@ public class StationController extends BasicController<Station> {
             boolean utiliseVoiture = !utiliseRepository.findAllByClient_IdClientAndBorneArriveeIsNull(clientId).isEmpty();
 
             request.setAttribute("utiliseVoiture", utiliseVoiture);
+
+            if(utiliseVoiture) {
+                Utilise utilisation = utiliseRepository.findAllByClient_IdClientAndBorneArriveeIsNull(clientId).get(0);
+                request.setAttribute("utilisationClient", utilisation);
+            }
         }
 
         request.setAttribute("station", station);

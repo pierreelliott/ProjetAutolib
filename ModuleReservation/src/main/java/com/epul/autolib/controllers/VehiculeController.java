@@ -45,28 +45,6 @@ public class VehiculeController extends BasicController<Station> {
         this.utiliseRepository = utiliseRepository;
     }
 
-    @RequestMapping(value = "/liste2")
-    public ModelAndView listeStations(HttpServletRequest request) {
-        List<Vehicule> vehiculesList = vehiculeRepository.findAll();
-
-        int page = 1;
-        if(request.getParameter("page") != null) {
-            page = Integer.parseInt(request.getParameter("page"));
-        }
-
-        // Pour pagination
-        int startIndex = nbVehiculesParPage * (page - 1);
-        int endIndex = Math.min((nbVehiculesParPage * page), vehiculesList.size());
-        int nbPages = (int) Math.ceil((double) vehiculesList.size() / nbVehiculesParPage);
-        request.setAttribute("nbPages", nbPages);
-        request.setAttribute("currentPage", page);
-
-        List<Vehicule> vehicules = vehiculesList.subList(startIndex, endIndex);
-        request.setAttribute("listeVehicule", vehicules);
-
-        return new ModelAndView(Vues.Vehicules.LIST+"2");
-    }
-
     @RequestMapping(value = "/liste")
     public ModelAndView listeTypesVehicules(HttpServletRequest request) {
         List<TypeVehicule> typeVehiculeList = typeVehiculeRepository.findAll();
@@ -125,7 +103,7 @@ public class VehiculeController extends BasicController<Station> {
             }
         }
 
-        return new ModelAndView(Vues.Reservations.LIST);
+        return new ModelAndView(Vues.Reservations.LIST_RDR);
     }
 
     @RequestMapping(value = "/deposer/{idVehicule}/{idBorne}")
@@ -150,6 +128,6 @@ public class VehiculeController extends BasicController<Station> {
             borneRepository.save(borne);
         }
 
-        return new ModelAndView(Vues.Reservations.LIST);
+        return new ModelAndView(Vues.Reservations.LIST_RDR);
     }
 }

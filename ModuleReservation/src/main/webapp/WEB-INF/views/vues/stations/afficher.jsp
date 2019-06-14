@@ -4,6 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <%--@elvariable id="station" type="com.epul.autolib.bo.Station"--%>
+<%--@elvariable id="utilisationClient" type="com.epul.autolib.bo.Utilise"--%>
 
 <t:layout>
     <jsp:attribute name="title">Autolib' - Station n°${station.id}</jsp:attribute>
@@ -53,7 +54,7 @@
                                 </td>
                                 <td>
                                     <c:if test="${sessionScope.id > 0 and utiliseVoiture}">
-                                        <a class="btn btn-primary" href="<c:url value="/vehicules/depot/${item.vehicule.idVehicule}/${item.idBorne}"/>"
+                                        <a class="btn btn-primary" href="<c:url value="/vehicules/deposer/${utilisationClient.vehicule.idVehicule}/${item.idBorne}"/>"
                                            title="Déposer un véhicule">
                                             <i class="far fa-calendar-check"></i>
                                             Déposer
