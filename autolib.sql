@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 14 Juin 2019 à 16:51
+-- Généré le :  Ven 14 Juin 2019 à 21:38
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -44,7 +44,7 @@ INSERT INTO `borne` (`idBorne`, `etatBorne`, `station`, `idVehicule`) VALUES
 (4, 1, 1, NULL),
 (5, 0, 2, 3),
 (6, 0, 2, 4),
-(7, 0, 2, 5),
+(7, 1, 2, NULL),
 (8, 1, 2, NULL),
 (9, 1, 2, NULL),
 (10, 1, 2, NULL),
@@ -56,7 +56,7 @@ INSERT INTO `borne` (`idBorne`, `etatBorne`, `station`, `idVehicule`) VALUES
 (16, 0, 4, 9),
 (17, 1, 4, NULL),
 (18, 1, 4, NULL),
-(19, 0, 5, 10),
+(19, 1, 5, NULL),
 (20, 0, 5, 11),
 (21, 1, 5, NULL),
 (22, 1, 5, NULL),
@@ -168,7 +168,7 @@ INSERT INTO `borne` (`idBorne`, `etatBorne`, `station`, `idVehicule`) VALUES
 (128, 1, 25, NULL),
 (129, 0, 26, 65),
 (130, 1, 26, NULL),
-(131, 0, 27, 66),
+(131, 1, 27, NULL),
 (132, 0, 27, 67),
 (133, 1, 27, NULL),
 (134, 1, 27, NULL),
@@ -361,7 +361,10 @@ INSERT INTO `reservation` (`id`, `vehicule`, `client`, `date_reservation`, `date
 (2, 1, 1, '2016-01-07 00:00:00', '2016-01-15 00:00:00'),
 (3, 2, 1, '2016-01-13 00:00:00', '2016-01-21 00:00:00'),
 (4, 3, 2, '2016-01-13 00:00:00', '2016-01-14 00:00:00'),
-(5, 5, 1, '2019-06-13 20:53:50', NULL);
+(5, 5, 1, '2019-06-13 20:53:50', '2019-06-13 21:53:50'),
+(6, 10, 13, '2019-06-14 21:42:35', '2019-06-14 21:57:19'),
+(7, 66, 13, '2019-06-14 22:04:21', '2019-06-14 22:04:51'),
+(8, 5, 7, '2019-06-14 22:28:33', '2019-06-14 22:29:02');
 
 -- --------------------------------------------------------
 
@@ -467,7 +470,9 @@ CREATE TABLE `utilise` (
 --
 
 INSERT INTO `utilise` (`id`, `Vehicule`, `Client`, `date`, `borne_depart`, `borne_arrivee`) VALUES
-(1, 1, 1, '2016-01-12 00:00:00', 7, 15);
+(1, 1, 1, '2016-01-12 00:00:00', 7, 15),
+(2, 66, 13, '2019-06-14 22:04:50', 131, NULL),
+(3, 5, 7, '2019-06-14 22:29:02', 7, NULL);
 
 -- --------------------------------------------------------
 
@@ -494,7 +499,7 @@ INSERT INTO `vehicule` (`idVehicule`, `RFID`, `etatBatterie`, `Disponibilite`, `
 (2, 1234567892, 100, 'LIBRE', '45.745013', '4.871353', 2),
 (3, 1234567893, 100, 'LIBRE', '45.756529', '4.835870', 2),
 (4, 1234567894, 100, 'LIBRE', '45.756529', '4.835870', 2),
-(5, 1234567895, 100, 'LIBRE', '45.756529', '4.835870', 3),
+(5, 1234567895, 100, 'OCCUPE', '45.756529', '4.835870', 3),
 (6, 1234567896, 100, 'LIBRE', '45.736646', '4.869195', 2),
 (7, 1234567897, 100, 'LIBRE', '45.736646', '4.869195', 2),
 (8, 1234567898, 100, 'LIBRE', '45.746291', '4.836518', 2),
@@ -555,7 +560,7 @@ INSERT INTO `vehicule` (`idVehicule`, `RFID`, `etatBatterie`, `Disponibilite`, `
 (63, 1234567953, 100, 'LIBRE', '45.760573', '4.857305', 2),
 (64, 1234567954, 100, 'LIBRE', '45.760573', '4.857305', 2),
 (65, 1234567955, 100, 'LIBRE', '45.760573', '4.857305', 7),
-(66, 1234567956, 100, 'LIBRE', '45.756497', '4.796727', 2),
+(66, 1234567956, 100, 'OCCUPE', '45.756497', '4.796727', 2),
 (67, 1234567957, 100, 'LIBRE', '45.760683', '4.835688', 2),
 (68, 1234567958, 100, 'LIBRE', '45.760683', '4.835688', 6),
 (69, 1234567959, 100, 'LIBRE', '45.762946', '4.832010', 1),
@@ -657,7 +662,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `station`
 --
@@ -672,7 +677,7 @@ ALTER TABLE `type_vehicule`
 -- AUTO_INCREMENT pour la table `utilise`
 --
 ALTER TABLE `utilise`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `vehicule`
 --
