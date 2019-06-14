@@ -10,4 +10,6 @@ import java.util.List;
 public interface UtiliseRepository extends JpaRepository<Utilise, Integer> {
 
     List<Utilise> findAllByClient_IdClient(int client_idClient);
+
+    List<Utilise> findAllByClient_IdClientAndBorneArrivee_EtatBorne(int client_idClient, boolean borneArrivee_etatBorne);
 }
