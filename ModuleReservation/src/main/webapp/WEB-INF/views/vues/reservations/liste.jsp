@@ -51,7 +51,7 @@
                                 <span class="font-italic">Échéance dépassée</span>
                             </c:if>
                             <c:if test="${not item.echeanceDepassee()}">
-                                <a href="<c:url value="/vehicules/retirer/${item.vehicule.idVehicule}"/>" class="btn btn-success">Retirer véhicule</a>
+                                <a href="<c:url value="/vehicules/retirer/${item.vehicule.idVehicule}/${item.id}"/>" class="btn btn-success">Retirer véhicule</a>
                             </c:if>
                         </td>
                     </tr>
