@@ -46,6 +46,12 @@
 							<a class="nav-link" href="<c:url value="/vehicules/liste"/>">Liste des véhicules</a>
 						</li>
 
+						<c:if test="${sessionScope.id > 0 }">
+							<li class="nav-item ml-auto">
+								<a class="nav-link" href="<c:url value="/reservations/liste"/>">Réservations</a>
+							</li>
+						</c:if>
+
 						<%--<li class="nav-item dropdown"> // TODO Joli dropdown, le bouton principal est un lien
 							<div class="btn-group">
 								<a role="button" href="<c:url value="/reservations/liste"/>" class="nav-link btn btn-default">Réservations</a>

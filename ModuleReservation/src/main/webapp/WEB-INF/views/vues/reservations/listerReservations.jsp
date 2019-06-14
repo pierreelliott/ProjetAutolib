@@ -3,11 +3,14 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
+<%--@elvariable id="vehiculesUtilises" type="java.util.List<com.epul.autolib.dto.UtiliseDTO>"--%>
+<%--@elvariable id="reservations" type="java.util.List<com.epul.autolib.dto.ReservationDTO>"--%>
+
 <t:layout>
-    <jsp:attribute name="title">Médiathèque de Polytech - Réservations</jsp:attribute>
+    <jsp:attribute name="title">Autolib - Compte client</jsp:attribute>
     <jsp:body>
         <div class="jumbotron text-center">
-            <h1>Listing des réservations</h1>
+            <h1>Compte client</h1>
         </div>
 
         <c:if test="${(erreur != null)}">
@@ -22,54 +25,37 @@
         <div class="container">
             <div class="row mb-3">
                 <a class="btn btn-secondary" href="<c:url value="/"/>" role="button"><i class="fas fa-chevron-left mr-2"></i>Retour accueil</a>
-                <div class="ml-auto">
-                    <a href="<c:url value="/reservations/nouveau"/>" class="btn btn-primary">Ajouter une réservation</a>
-                </div>
             </div>
 
-            <table class="table table-hover">
-                <thead>
+            <h1>Véhicules utilisés</h1>
+            <table class="table table-hover table-striped">
+                <c:forEach items="${vehiculesUtilises}" var="item">
                     <tr>
-                        <th>Titre</th>
-                        <th>Prénom adhérent(e)</th>
-                        <th>Nom adhérent(e)</th>
-                        <th>Date</th>
-                        <th>Statut</th>
-                        <th></th>
+                        <td>${item.printVehicule()}, le ${item.printFormattedDate()}</td>
+                        <td>
+                            <c:if test="${item.aDeposer()}">
+                                <a href="<c:url value="/stations/carte"/>" class="btn btn-success">Déposer véhicule</a>
+                            </c:if>
+                        </td>
                     </tr>
-                </thead>
+                </c:forEach>
+            </table>
 
-                <tbody>
-                    <%--@elvariable id="listeReservation" type="java.util.List<com.epul.autolib.domains.Reservation>"--%>
-                    <c:forEach items="${listeReservation}" var="item">
-                        <tr>
-                            <td>${item.oeuvre.titre}</td>
-                            <td>${item.adherent.prenom}</td>
-                            <td>${item.adherent.nom}</td>
-                            <td>${item.dateReservation}</td>
-                            <td>${item.statut.toUpperCase()}</td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Actions sur la réservation">
-                                    <c:if test="${item.statut == 'en attente'}">
-                                        <a class="btn btn-success" href="/reservations/valider/${item.id}"
-                                           title="Confirmer la réservation" role="button">
-                                            <span class="fas fa-check"></span>
-                                        </a>
-                                    </c:if>
-
-                                    <a class="btn btn-primary" href="/reservations/modifier/${item.id}"
-                                       title="Modifier" role="button">
-                                        <span class="fas fa-edit"></span>
-                                    </a>
-                                    <a class="btn btn-danger" href="/reservations/supprimer/${item.id}"
-                                       title="Supprimer" role="button">
-                                        <span class="fas fa-ban"></span>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
+            <h1>Réservations</h1>
+            <table class="table table-hover table-striped">
+                <c:forEach items="${reservations}" var="item">
+                    <tr>
+                        <td>${item.printVehicule()}, le ${item.printFormattedDateReservation()}</td>
+                        <td>
+                            <c:if test="${item.echeanceDepassee()}">
+                                <span class="font-italic">Échéance dépassée</span>
+                            </c:if>
+                            <c:if test="${not item.echeanceDepassee()}">
+                                <a href="<c:url value="/vehicules/retirer/${item.vehicule.idVehicule}"/>" class="btn btn-success">Retirer véhicule</a>
+                            </c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </jsp:body>

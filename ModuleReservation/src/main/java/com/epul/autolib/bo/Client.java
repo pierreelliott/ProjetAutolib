@@ -11,6 +11,8 @@ public class Client {
     private String nom;
     private String prenom;
     private Date dateNaissance;
+    private String login;
+    private String password;
 
     @Id
     @Column(name = "idClient")
@@ -50,6 +52,26 @@ public class Client {
 
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+
+    @Basic
+    @Column(name = "login")
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @Basic
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

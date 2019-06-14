@@ -1,10 +1,12 @@
 package com.epul.autolib.controllers;
 
 
+import com.epul.autolib.bo.Client;
 import com.epul.autolib.domains.Utilisateur;
 import com.epul.autolib.meserreurs.MonException;
+import com.epul.autolib.repositories.ClientRepository;
 import com.epul.autolib.repositories.UtilisateurRepository;
-import com.epul.autolib.utilitaires.FonctionsUtiles;
+import com.epul.autolib.utilitaires.Utils;
 import com.epul.autolib.utilitaires.Layout;
 import com.epul.autolib.utilitaires.Vues;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,12 @@ import java.security.NoSuchAlgorithmException;
 public class AuthentificationController {
 
     private final UtilisateurRepository utilisateurRepository;
+    private final ClientRepository clientRepository;
 
     @Autowired
-    public AuthentificationController(UtilisateurRepository utilisateurRepository) {
+    public AuthentificationController(UtilisateurRepository utilisateurRepository, ClientRepository clientRepository) {
         this.utilisateurRepository = utilisateurRepository;
+        this.clientRepository = clientRepository;
     }
 
     @RequestMapping("/login")
@@ -34,7 +38,7 @@ public class AuthentificationController {
         return new Layout(Vues.LOGIN);
     }
 
-    @RequestMapping(value = "logout")
+    @RequestMapping("/logout")
     public ModelAndView pageLogout(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         session.removeAttribute("id");
@@ -51,15 +55,13 @@ public class AuthentificationController {
             String message ="";
             try {
 
-                Utilisateur unUtilisateur;
-                unUtilisateur = utilisateurRepository.getEntityUtilisateurByNomUtil(login);
-                if (unUtilisateur != null)
-                {
+                Client client = clientRepository.findClientByLogin(login);
+                if (client != null) {
                     try {
-                        String pwdmd5 = FonctionsUtiles.md5(pwd);
-                        if (unUtilisateur.getMotPasse().equals(pwdmd5)) {
+                        String pwdmd5 = Utils.md5(pwd);
+                        if (client.getPassword().equals(pwdmd5)) {
                             HttpSession session = request.getSession();
-                            session.setAttribute("id", unUtilisateur.getId());
+                            session.setAttribute("id", client.getIdClient());
                             destinationPage = Vues.INDEX_RDR;
                         } else {
                             message = "mot de passe erroné";
@@ -85,7 +87,7 @@ public class AuthentificationController {
 
     @RequestMapping("/inscription")
     public ModelAndView inscription(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new Layout(Vues.Erreur.E404);
+        return new Layout(Vues.Erreur.WIP);
     }
 
 }

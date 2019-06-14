@@ -6,36 +6,24 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "utilise", schema = "autolib", catalog = "")
-@IdClass(UtilisePK.class)
 public class Utilise {
-    private int vehicule;
-//    private int client;
+    private int id;
+    private Vehicule vehicule;
     private Timestamp date;
     private Client client;
     private Borne borneDepart;
     private Borne borneArrivee;
 
     @Id
-    @Column(name = "Vehicule")
-    public int getVehicule() {
-        return vehicule;
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public void setVehicule(int vehicule) {
-        this.vehicule = vehicule;
+    public void setId(int id) {
+        this.id = id;
     }
 
-//    @Id
-//    @Column(name = "Client")
-//    public int getIdClient() {
-//        return client;
-//    }
-//
-//    public void setIdClient(int client) {
-//        this.client = client;
-//    }
-
-    @Id
     @Column(name = "date")
     public Timestamp getDate() {
         return date;
@@ -49,15 +37,18 @@ public class Utilise {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Utilise that = (Utilise) o;
-        return vehicule == that.vehicule &&
-//                client == that.client &&
-                Objects.equals(date, that.date);
+        Utilise utilise = (Utilise) o;
+        return id == utilise.id &&
+                Objects.equals(vehicule, utilise.vehicule) &&
+                Objects.equals(date, utilise.date) &&
+                Objects.equals(client, utilise.client) &&
+                Objects.equals(borneDepart, utilise.borneDepart) &&
+                Objects.equals(borneArrivee, utilise.borneArrivee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(vehicule, client, date);
+        return Objects.hash(id, vehicule, date, client, borneDepart, borneArrivee);
     }
 
     @ManyToOne
@@ -88,5 +79,15 @@ public class Utilise {
 
     public void setBorneArrivee(Borne borneArrivee) {
         this.borneArrivee = borneArrivee;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Vehicule", referencedColumnName = "idVehicule", nullable = false)
+    public Vehicule getVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
     }
 }

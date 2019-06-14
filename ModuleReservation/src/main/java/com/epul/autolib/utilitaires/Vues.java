@@ -29,6 +29,7 @@ public class Vues {
     public static class Erreur { // Devraient plus être utiles
         public static final String E404 = "vues/404";
         public static final String ERREUR = "vues/Erreur";
+        public static final String WIP = "vues/workInProgress";
     }
 
     // ========== Anciens exemples ============

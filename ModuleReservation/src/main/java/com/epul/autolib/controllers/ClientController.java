@@ -20,12 +20,12 @@ import java.util.List;
 @RequestMapping("/adherents")
 @Controller
 @CrossOrigin
-public class AdherentController extends BasicController<Adherent> {
+public class ClientController extends BasicController<Adherent> {
 
     private final AdherentRepository adherentRepository;
 
     @Autowired
-    public AdherentController(AdherentRepository adherentRepository) {
+    public ClientController(AdherentRepository adherentRepository) {
         super(Adherent.class);
         this.adherentRepository = adherentRepository;
     }

@@ -3,9 +3,11 @@ package com.epul.autolib.dto;
 import com.epul.autolib.bo.Client;
 import com.epul.autolib.bo.Station;
 import com.epul.autolib.bo.Vehicule;
+import com.epul.autolib.utilitaires.Utils;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class ReservationDTO implements Serializable {
     private Integer idVehicule;
@@ -71,5 +73,17 @@ public class ReservationDTO implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public String printVehicule() {
+        return vehicule.getTypeVehicule().getTypeVehicule() + " (" + vehicule.getTypeVehicule().getCategorie() + ")";
+    }
+
+    public String printFormattedDateReservation() {
+        return Utils.FORMATTER.format(new Date(dateReservation.getTime()));
+    }
+
+    public boolean echeanceDepassee() {
+        return new Date(dateEcheance.getTime()).before(new Date());
     }
 }

@@ -8,7 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class FonctionsUtiles {
+public class Utils {
+	public static final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy' à 'HH:mm");
 
 	// /
 	// / Conversion d'une date en chaîne
