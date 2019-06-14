@@ -3,13 +3,20 @@ package com.epul.autolib.utilitaires;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Utils {
 	public static final SimpleDateFormat FORMATTER = new SimpleDateFormat("dd/MM/yyyy' à 'HH:mm");
+
+	public static Timestamp localDateTimeToTimestamp(LocalDateTime localDateTime) {
+		return new Timestamp(Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()).getTime());
+	}
 
 	// /
 	// / Conversion d'une date en chaîne

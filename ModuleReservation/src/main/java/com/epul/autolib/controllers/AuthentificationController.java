@@ -2,10 +2,8 @@ package com.epul.autolib.controllers;
 
 
 import com.epul.autolib.bo.Client;
-import com.epul.autolib.domains.Utilisateur;
 import com.epul.autolib.meserreurs.MonException;
 import com.epul.autolib.repositories.ClientRepository;
-import com.epul.autolib.repositories.UtilisateurRepository;
 import com.epul.autolib.utilitaires.Utils;
 import com.epul.autolib.utilitaires.Layout;
 import com.epul.autolib.utilitaires.Vues;
@@ -24,12 +22,10 @@ import java.security.NoSuchAlgorithmException;
 @CrossOrigin
 public class AuthentificationController {
 
-    private final UtilisateurRepository utilisateurRepository;
     private final ClientRepository clientRepository;
 
     @Autowired
-    public AuthentificationController(UtilisateurRepository utilisateurRepository, ClientRepository clientRepository) {
-        this.utilisateurRepository = utilisateurRepository;
+    public AuthentificationController(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 

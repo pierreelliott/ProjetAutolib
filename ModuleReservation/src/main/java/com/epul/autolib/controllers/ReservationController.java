@@ -1,27 +1,23 @@
 package com.epul.autolib.controllers;
 
+import com.epul.autolib.bo.Reservation;
 import com.epul.autolib.bo.Station;
-import com.epul.autolib.domains.Reservation;
+import com.epul.autolib.bo.Utilise;
 import com.epul.autolib.dto.ReservationDTO;
+import com.epul.autolib.dto.UtiliseDTO;
 import com.epul.autolib.repositories.*;
 import com.epul.autolib.service.ReservationService;
-import com.epul.autolib.utilitaires.EtatReservationEnum;
-import com.epul.autolib.utilitaires.Layout;
-import com.epul.autolib.utilitaires.Vues;
-import com.epul.autolib.utilitaires.VuesAlt;
+import com.epul.autolib.utilitaires.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import javax.jms.Topic;
-import javax.jms.TopicConnectionFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequestMapping("/reservations")
 @RestController
@@ -33,44 +29,47 @@ public class ReservationController extends BasicController<Reservation> {
     private final ClientRepository clientRepository;
     private final StationRepository stationRepository;
     private final ReservationService reservationService;
-
-    @Resource(lookup = "java:jboss/exported/topic/DemandeReservationJmsTopic")
-    private Topic topic;
-    // On accède à l'EJB
-    @Resource(mappedName = "java:/ConnectionFactory")
-    private TopicConnectionFactory cf;
+    private final UtiliseRepository utiliseRepository;
 
     @Autowired
     public ReservationController(ReservationRepository reservationRepository, VehiculeRepository vehiculeRepository,
-                                 ClientRepository clientRepository, StationRepository stationRepository, ReservationService reservationService) {
+                                 ClientRepository clientRepository, StationRepository stationRepository,
+                                 ReservationService reservationService, UtiliseRepository utiliseRepository) {
         super(Reservation.class);
         this.reservationRepository = reservationRepository;
         this.vehiculeRepository = vehiculeRepository;
         this.clientRepository = clientRepository;
         this.stationRepository = stationRepository;
         this.reservationService = reservationService;
+        this.utiliseRepository = utiliseRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/liste")
     public ModelAndView lister(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String destinationPage;
-        List<Reservation> list;
         try {
             retrieveError(request);
 
-            list = reservationRepository.findAll();
-            request.setAttribute("listeReservation", list);
-            destinationPage = LIST;
+            Integer idClient = (Integer) request.getSession().getAttribute("id");
+
+            List<Reservation> listeReservations = reservationRepository.findAllByClient_IdClient(idClient);
+            List<ReservationDTO> listeReservationDTO = listeReservations.stream().map(ReservationDTO::new).collect(Collectors.toList());
+            request.setAttribute("reservations", listeReservationDTO);
+
+            List<Utilise> listeUtilises = utiliseRepository.findAllByClient_IdClient(idClient);
+            List<UtiliseDTO> utiliseDTOList = listeUtilises.stream().map(UtiliseDTO::new).collect(Collectors.toList());
+            request.setAttribute("vehiculesUtilises", utiliseDTOList);
+
+            destinationPage = Vues.Reservations.LIST;
         } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
-            destinationPage = VuesAlt.Erreur.E404;
+            destinationPage = Vues.Erreur.E404;
         }
         return new Layout(destinationPage);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/nouveau")
     public ModelAndView ajouter(HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String, String> queryParameters) throws Exception {
-        String destinationPage = ADD;
         ReservationDTO reservationDTO = new ReservationDTO();
 //        listesModifiablesReservation(request, reservationDTO);
 
@@ -89,14 +88,17 @@ public class ReservationController extends BasicController<Reservation> {
             return "";
         });
 
-        reservationDTO.setIdClient(1); // FIXME Récupérer depuis la session
+        Integer idClient = (Integer) request.getSession().getAttribute("id");
+        reservationDTO.setIdClient(idClient);
 
         request.setAttribute("reservation", reservationDTO);
 
-        // FIXME C'est juste pour tester
-        reservationDTO.setDateReservation(new Timestamp(new Date().getTime()));
+        LocalDateTime date = LocalDateTime.now();
+        reservationDTO.setDateReservation(Utils.localDateTimeToTimestamp(date));
+        reservationDTO.setDateEcheance(Utils.localDateTimeToTimestamp(date.plusMinutes(90)));
+
         insert(request, response, reservationDTO);
-        return new Layout(destinationPage);
+        return new Layout(Vues.Reservations.LIST_RDR);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/insererReservation")
@@ -105,7 +107,7 @@ public class ReservationController extends BasicController<Reservation> {
 
         try {
             Exception exceptionClient = new Exception("Aucun client sélectionné.");
-            Exception exceptionVehicule = new Exception("Aucune véhicule sélectionnée.");
+            Exception exceptionVehicule = new Exception("Aucun véhicule sélectionnée.");
 
             if(reservationDTO.getIdClient() == null) {
                 throw exceptionClient;
@@ -124,36 +126,5 @@ public class ReservationController extends BasicController<Reservation> {
         }
 
         return new Layout(destinationPage);
-    }
-
-
-    @RequestMapping(method = RequestMethod.GET, value = "/valider/{id}")
-    public ModelAndView validate(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) throws Exception {
-        try {
-            Reservation reservation = reservationRepository.findById(id).orElse(null);
-
-            if(reservation == null || reservation.getStatut().equals(EtatReservationEnum.CONFIRMED.getLabel())) {
-                throw new Exception("Impossible de valider cette réservation.");
-            }
-
-            reservation.setStatut(EtatReservationEnum.CONFIRMED.getLabel());
-
-            reservationRepository.save(reservation);
-        } catch (Exception e) {
-            request.getSession().setAttribute("erreur", e.getMessage());
-        }
-
-        return new Layout(LIST_RDR);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/supprimer/{id}")
-    public ModelAndView delete(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) throws Exception {
-        try {
-            reservationRepository.deleteById(id);
-        } catch (Exception e) {
-            request.getSession().setAttribute("erreur", "Impossible de supprimer cette réservation.");
-        }
-
-        return new Layout(LIST_RDR);
     }
 }

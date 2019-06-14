@@ -5,7 +5,6 @@
 <c:set var="validateButtonTitle" value="${param.validateButtonTitle}"/>
 <c:set var="readonly" value="${param.readonly ? param.readonly : false}"/>
 <c:set var="backButtonURL" value="${param.backButtonURL}"/>
-<%--@elvariable id="reservation" type="com.epul.autolib.dto.ReservationDTOOld"--%>
 
 <%--<c:set var="idAdherent" value="${(reservation != null) ? reservation.adherent.id : idAdherent}"/>--%>
 <%--<c:set var="idOeuvre" value="${(reservation != null) ? reservation.oeuvre.id : idOeuvre}"/>--%>

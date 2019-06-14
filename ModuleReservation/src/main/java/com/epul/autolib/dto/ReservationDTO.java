@@ -1,6 +1,7 @@
 package com.epul.autolib.dto;
 
 import com.epul.autolib.bo.Client;
+import com.epul.autolib.bo.Reservation;
 import com.epul.autolib.bo.Station;
 import com.epul.autolib.bo.Vehicule;
 import com.epul.autolib.utilitaires.Utils;
@@ -10,6 +11,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class ReservationDTO implements Serializable {
+    private int id;
+
     private Integer idVehicule;
     private Integer idClient;
     private Timestamp dateReservation;
@@ -18,6 +21,26 @@ public class ReservationDTO implements Serializable {
     private Vehicule vehicule;
     private Station station;
     private Client client;
+
+    public ReservationDTO() {
+
+    }
+
+    public ReservationDTO(Reservation reservation) {
+        this.id = reservation.getId();
+        this.vehicule = reservation.getVehicule();
+        this.client = reservation.getClient();
+        this.dateReservation = reservation.getDateReservation();
+        this.dateEcheance = reservation.getDateEcheance();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Integer getIdVehicule() {
         return idVehicule;

@@ -1,9 +1,7 @@
 package com.epul.autolib.controllers;
 
-import com.epul.autolib.utilitaires.VuesAlt;
-import com.epul.autolib.domains.Adherent;
-import com.epul.autolib.meserreurs.MonException;
-import com.epul.autolib.repositories.AdherentRepository;
+import com.epul.autolib.bo.Client;
+import com.epul.autolib.repositories.ClientRepository;
 import com.epul.autolib.utilitaires.Vues;
 import com.epul.autolib.utilitaires.Layout;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,106 +15,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
-@RequestMapping("/adherents")
+@RequestMapping("/clients")
 @Controller
 @CrossOrigin
-public class ClientController extends BasicController<Adherent> {
+public class ClientController extends BasicController<Client> {
 
-    private final AdherentRepository adherentRepository;
+    private final ClientRepository clientRepository;
 
     @Autowired
-    public ClientController(AdherentRepository adherentRepository) {
-        super(Adherent.class);
-        this.adherentRepository = adherentRepository;
+    public ClientController(ClientRepository clientRepository) {
+        super(Client.class);
+        this.clientRepository = clientRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/liste")
     public ModelAndView lister(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String destinationPage;
-        List<Adherent> list = null;
+        List<Client> list = null;
         try {
             retrieveError(request);
 
-            list = adherentRepository.findAll();
-            request.setAttribute("listeAdherent", list);
-            destinationPage = LIST;
-        } catch (Exception e) {
-            request.setAttribute("MesErreurs", e.getMessage());
-            destinationPage = VuesAlt.Erreur.ERREUR;
-        }
-        return new Layout(destinationPage);
-    }
-
-    @GetMapping("/getAdherent/{id}")
-    public Adherent getAdherentById(@PathVariable(value = "id") int id) {
-        return adherentRepository.findById(id).orElseThrow(
-                () -> new MonException("Adherent", "id", id)
-        );
-    }
-
-    @RequestMapping(value = "/nouveau")
-    public ModelAndView ajouter(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new Layout(ADD);
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/insererAdherent")
-    public ModelAndView insert(HttpServletRequest request, HttpServletResponse response, @ModelAttribute Adherent adherent) throws Exception {
-        String destinationPage;
-        try {
-            adherentRepository.save(adherent);
-
-            destinationPage = LIST_RDR;
-        } catch (Exception e) {
-            request.setAttribute("MesErreurs", e.getMessage());
-            destinationPage = VuesAlt.Erreur.ERREUR;
-        }
-
-        return new Layout(destinationPage);
-    }
-
-    @RequestMapping(value = "/modifier/{id}")
-    public ModelAndView modifier(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) throws Exception {
-        String destinationPage;
-        try {
-            Adherent adherent = adherentRepository.findById(id).orElse(null);
-            request.setAttribute("unAdherent", adherent);
-            destinationPage = UPDATE;
-//            destinationPage = "vues/adherents/test";
+            list = clientRepository.findAll();
+            request.setAttribute("listeClient", list);
+            destinationPage = Vues.Clients.LIST;
         } catch (Exception e) {
             request.setAttribute("MesErreurs", e.getMessage());
             destinationPage = Vues.Erreur.ERREUR;
         }
-
-        return new Layout(destinationPage);
-    }
-
-    @RequestMapping(method = RequestMethod.POST,value = "/modifierAdherent")
-    public ModelAndView update(HttpServletRequest request, HttpServletResponse response, @ModelAttribute Adherent adherent) throws Exception {
-        String destinationPage;
-        try {
-            adherentRepository.save(adherent);
-
-            destinationPage = LIST_RDR;
-        } catch (Exception e) {
-            request.setAttribute("MesErreurs", e.getMessage());
-            destinationPage = Vues.Erreur.ERREUR;
-        }
-
-        return new Layout(destinationPage);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/supprimer/{id}")
-    public ModelAndView delete(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) throws Exception {
-        String destinationPage;
-        try {
-            adherentRepository.deleteById(id);
-
-            destinationPage = LIST_RDR;
-        } catch (Exception e) {
-            request.getSession().setAttribute("erreur", e.getMessage());
-            destinationPage = LIST_RDR;
-        }
-
         return new Layout(destinationPage);
     }
 }
