@@ -1,0 +1,31 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  color: white;
+  text-align: center;
+}
+
+.car-green {
+  color: green;
+}
+
+.car-blue {
+  color: blue;
+}
+
+.car-orange {
+  color: orange;
+}
+
+.fa {
+  font-size: 2rem;
+}
+
+.badge {
+  position: relative;
+  top: -20px;
+  left: -10px;
+}
