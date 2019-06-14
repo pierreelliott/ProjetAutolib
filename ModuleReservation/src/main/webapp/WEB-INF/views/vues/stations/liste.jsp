@@ -69,7 +69,7 @@
 					<li class="page-item">
 						<c:choose>
 							<c:when test="${currentPage != 1}">
-								<a class="page-link" href="liste?page=${currentPage - 1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								<a class="page-link" href="<c:url value="/stations/liste?page=${currentPage - 1}"/>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
 							</c:when>
 							<c:otherwise>
 								<span class="page-link" aria-hidden="true">&laquo;</span>
@@ -83,7 +83,7 @@
 								<li class="page-item page-link">${ i }</li>
 							</c:when>
 							<c:otherwise>
-								<li class="page-item"><a class="page-link" href="liste?page=${ i }">${ i }</a></li>
+								<li class="page-item"><a class="page-link" href="<c:url value="/stations/liste?page=${ i }"/>">${ i }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -91,7 +91,7 @@
 					<li class="page-item">
 						<c:choose>
 							<c:when test="${currentPage lt nbPages}">
-								<a class="page-link" href="liste?page=${currentPage + 1}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								<a class="page-link" href="<c:url value="/stations/liste?page=${currentPage + 1}"/>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 							</c:when>
 							<c:otherwise>
 								<span class="page-link" aria-hidden="true">&raquo;</span>
