@@ -71,11 +71,16 @@ public class StationController extends BasicController<Station> {
     @RequestMapping(value = "/{stationId}")
     public ModelAndView afficheStation(HttpServletRequest request, @PathVariable("stationId") int stationId) {
         Station station = stationRepository.findById(stationId).get();
-        int clientId = (Integer) request.getSession().getAttribute("id");
-        boolean utiliseVoiture = !utiliseRepository.findAllByClient_IdClientAndBorneArriveeIsNull(clientId).isEmpty();
+        Object clientIdentifier = request.getSession().getAttribute("id");
+
+        if (clientIdentifier != null) {
+            int clientId = (Integer) clientIdentifier;
+            boolean utiliseVoiture = !utiliseRepository.findAllByClient_IdClientAndBorneArriveeIsNull(clientId).isEmpty();
+
+            request.setAttribute("utiliseVoiture", utiliseVoiture);
+        }
 
         request.setAttribute("station", station);
-        request.setAttribute("utiliseVoiture", utiliseVoiture);
 
         return new ModelAndView(Vues.Stations.AFFICHER);
     }

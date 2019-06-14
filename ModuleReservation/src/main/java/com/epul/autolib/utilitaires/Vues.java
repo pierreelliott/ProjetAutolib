@@ -3,6 +3,7 @@ package com.epul.autolib.utilitaires;
 public class Vues {
 
     public static final String LOGIN = "vues/formLogin";
+    public static final String LOGIN_RDR = "redirect:/login";
 
     public static final String INDEX = "index";
     public static final String INDEX_RDR = "redirect:/";

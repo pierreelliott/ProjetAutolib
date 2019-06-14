@@ -75,6 +75,13 @@ public class ReservationController extends BasicController<Reservation> {
         ReservationDTO reservationDTO = new ReservationDTO();
 //        listesModifiablesReservation(request, reservationDTO);
 
+        Object clientIdentifier = request.getSession().getAttribute("id");
+
+        if (clientIdentifier == null) {
+            request.getSession().setAttribute("erreur", "Vous devez d'abord vous connecter avant de pouvoir réserver un véhicule.");
+
+            return new ModelAndView(Vues.LOGIN_RDR);
+        }
         int idClient = (Integer) request.getSession().getAttribute("id");
         List<Utilise> utilisations = utiliseRepository.findAllByClient_IdClientAndBorneArriveeIsNull(idClient);
         if(utilisations.size() > 0) { // Empêche la réservation de plusieurs véhicules

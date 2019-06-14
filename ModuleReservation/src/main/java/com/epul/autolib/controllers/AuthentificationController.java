@@ -20,17 +20,19 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("")
 @RestController
 @CrossOrigin
-public class AuthentificationController {
+public class AuthentificationController extends BasicController<Client> {
 
     private final ClientRepository clientRepository;
 
     @Autowired
     public AuthentificationController(ClientRepository clientRepository) {
+        super(Client.class);
         this.clientRepository = clientRepository;
     }
 
     @RequestMapping("/login")
     public ModelAndView pageLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        retrieveError(request);
         return new Layout(Vues.LOGIN);
     }
 

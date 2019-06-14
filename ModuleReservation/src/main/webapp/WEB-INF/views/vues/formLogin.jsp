@@ -7,6 +7,23 @@
     <jsp:attribute name="title">Autolib' - Connexion</jsp:attribute>
     <jsp:body>
         <form method="post" action="<c:url value="/controleLogin"/>">
+            <c:if test="${(erreur != null)}">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong><i class="fas fa-exclamation-triangle mr-1"></i></strong> ${erreur}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
+
+            <c:if test="${(message != null)}">
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <strong><i class="fas fa-exclamation-triangle mr-1"></i></strong> ${message}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
         <div class="col-md-12 well well-md">
             <h1 class="text-center">Authentification</h1>
             <div class="form-horizontal">

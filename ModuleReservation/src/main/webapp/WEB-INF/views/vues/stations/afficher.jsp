@@ -22,7 +22,6 @@
 
             <h2>Bornes</h2>
             <table>
-                <a class="btn btn-success" href="<c:url value="/reservations/nouveau/${item.vehicule.idVehicule}"/>"
                 <c:forEach items="${station.bornes}" var="item">
                     <tr>
                         <c:choose>
@@ -53,15 +52,18 @@
                                     Aucun véhicule libre sur cette borne
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary" href="<c:url value="/vehicules/depot/${item.vehicule.idVehicule}"/>"
-                                       title="Réserver un véhicule">
-                                        <i class="far fa-calendar-check"></i>
-                                        Déposer
-                                    </a>
+                                    <c:if test="${sessionScope.id > 0}">
+                                        <a class="btn btn-primary" href="<c:url value="/vehicules/depot/${item.vehicule.idVehicule}"/>"
+                                           title="Réserver un véhicule">
+                                            <i class="far fa-calendar-check"></i>
+                                            Déposer
+                                        </a>
+                                    </c:if>
+
                                 </td>
                             </c:otherwise>
-                    </tr>
                         </c:choose>
+                    </tr>
                 </c:forEach>
             </table>
 
