@@ -5,6 +5,7 @@ import com.epul.autolib.repositories.StationRepository;
 import com.epul.autolib.utilitaires.Vues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -62,5 +63,14 @@ public class StationController extends BasicController<Station> {
         request.setAttribute("stations", stations);
 
         return new ModelAndView(Vues.Stations.CARTE);
+    }
+
+    @RequestMapping(value = "/{stationId}")
+    public ModelAndView afficheStation(HttpServletRequest request, @PathVariable("stationId") int stationId) {
+        Station station = stationRepository.findById(stationId).get();
+
+        request.setAttribute("station", station);
+
+        return new ModelAndView(Vues.Stations.AFFICHER);
     }
 }

@@ -9,6 +9,7 @@
           <factory-entry name="PInscription" value="73103781-e73a-4be0-82c5-919a0d0e6c2c" />
           <factory-entry name="PReservation" />
         </datasource-mapping>
+        <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
