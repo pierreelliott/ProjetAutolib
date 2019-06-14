@@ -22,13 +22,14 @@
 
             <h2>Bornes</h2>
             <table>
+                <a class="btn btn-success" href="<c:url value="/reservations/nouveau/${item.vehicule.idVehicule}"/>"
                 <c:forEach items="${station.bornes}" var="item">
                     <tr>
                         <c:choose>
                             <c:when test="${item.vehicule != null and item.vehicule.disponibilite eq 'LIBRE'}">
                                 <td>
                                     <i class="fas fa-car text-success fa-2x"></i>
-                                        ${item.vehicule.typeVehicule.typeVehicule} (${item.vehicule.etatBatterie}% batterie)
+                                    ${item.vehicule.typeVehicule.typeVehicule} (${item.vehicule.etatBatterie}% batterie)
                                 </td>
 
                                 <td>
@@ -40,8 +41,8 @@
                                 </td>
                             </c:when>
                             <c:when test="${item.vehicule != null and item.vehicule.disponibilite ne 'LIBRE'}">
+                                <i class="fas fa-car text-warning fa-2x"></i>
                                 <td>
-                                    <i class="fas fa-car text-warning fa-2x"></i>
                                     Ce véhicule a été réservé par un utilisateur.
                                 </td>
                                 <td></td>
@@ -51,10 +52,16 @@
                                     <i class="fas fa-car text-danger fa-2x"></i>
                                     Aucun véhicule libre sur cette borne
                                 </td>
-                                <td></td>
+                                <td>
+                                    <a class="btn btn-primary" href="<c:url value="/vehicules/depot/${item.vehicule.idVehicule}"/>"
+                                       title="Réserver un véhicule">
+                                        <i class="far fa-calendar-check"></i>
+                                        Déposer
+                                    </a>
+                                </td>
                             </c:otherwise>
-                        </c:choose>
                     </tr>
+                        </c:choose>
                 </c:forEach>
             </table>
 
