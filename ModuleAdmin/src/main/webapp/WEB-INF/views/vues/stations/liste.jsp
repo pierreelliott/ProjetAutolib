@@ -48,17 +48,9 @@
 								</div>
 							</td>
 							<td>
-								<c:if test="${item.nbVehiculesLibres > 0}">
-									<a class="btn btn-success" href="<c:url value="/stations/${item.id}"/>"
-									   title="Réserver un véhicule">
-										<i class="far fa-calendar-check"></i>
-									</a>
-								</c:if>
-								<c:if test="${item.nbVehiculesLibres == 0}">
-									<button class="btn btn-success disabled" title="Aucun véhicule disponible !">
-										<i class="far fa-calendar-check"></i>
-									</button>
-								</c:if>
+								<a class="btn btn-info" href="<c:url value="/stations/${item.id}"/>">
+									<i class="far fa-eye"></i> Inspecter
+								</a>
 							</td>
 						</tr>
 					</c:forEach>

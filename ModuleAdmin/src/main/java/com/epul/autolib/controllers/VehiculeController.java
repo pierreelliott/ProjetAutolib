@@ -45,7 +45,7 @@ public class VehiculeController extends BasicController<Station> {
         this.utiliseRepository = utiliseRepository;
     }
 
-    @RequestMapping(value = "/liste2")
+    @RequestMapping(value = "/liste")
     public ModelAndView listeStations(HttpServletRequest request) {
         List<Vehicule> vehiculesList = vehiculeRepository.findAll();
 
@@ -67,7 +67,7 @@ public class VehiculeController extends BasicController<Station> {
         return new ModelAndView(Vues.Vehicules.LIST+"2");
     }
 
-    @RequestMapping(value = "/liste")
+    @RequestMapping(value = "/types")
     public ModelAndView listeTypesVehicules(HttpServletRequest request) {
         List<TypeVehicule> typeVehiculeList = typeVehiculeRepository.findAll();
 

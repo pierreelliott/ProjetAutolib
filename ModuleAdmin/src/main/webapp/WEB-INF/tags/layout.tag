@@ -46,6 +46,9 @@
 							<a class="nav-link" href="<c:url value="/vehicules/liste"/>">Liste des véhicules</a>
 						</li>
 						<li class="nav-item ml-auto">
+							<a class="nav-link" href="<c:url value="/vehicules/types"/>">Liste des types de véhicules</a>
+						</li>
+						<li class="nav-item ml-auto">
 							<a class="nav-link" href="<c:url value="/clients/liste"/>">Liste des clients</a>
 						</li>
 					</ul>
