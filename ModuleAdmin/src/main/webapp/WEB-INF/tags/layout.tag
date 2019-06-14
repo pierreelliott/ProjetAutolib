@@ -45,28 +45,15 @@
 						<li class="nav-item ml-auto">
 							<a class="nav-link" href="<c:url value="/vehicules/liste"/>">Liste des véhicules</a>
 						</li>
-
-						<%--<li class="nav-item dropdown"> // TODO Joli dropdown, le bouton principal est un lien
-							<div class="btn-group">
-								<a role="button" href="<c:url value="/reservations/liste"/>" class="nav-link btn btn-default">Réservations</a>
-								<button role="button" class="nav-link btn btn-default dropdown-toggle dropdown-toggle-split"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="sr-only">Menu déroulant</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="reservationsNavbarDropdown">
-									<a class="dropdown-item" href="<c:url value="/reservations/nouveau"/>">Ajouter une réservation</a>
-								</div>
-							</div>
-						</li>--%>
+						<li class="nav-item ml-auto">
+							<a class="nav-link" href="<c:url value="/clients/liste"/>">Liste des clients</a>
+						</li>
 					</ul>
 
 						<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 							<c:if test="${sessionScope.id == null }">
 								<li class="nav-item ml-auto">
 									<a class="nav-link" href="<c:url value="/login"/>">Connexion</a>
-								</li>
-								<li class="nav-item ml-auto">
-									<a class="nav-link" href="<c:url value="/inscription"/>">Inscription</a>
 								</li>
 							</c:if>
 							<c:if test="${sessionScope.id > 0 }">

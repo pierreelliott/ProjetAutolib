@@ -1,10 +1,10 @@
 package com.epul.autolib.controllers;
 
 
-import com.epul.autolib.domains.Utilisateur;
+import com.epul.autolib.bo.Client;
 import com.epul.autolib.meserreurs.MonException;
-import com.epul.autolib.repositories.UtilisateurRepository;
-import com.epul.autolib.utilitaires.FonctionsUtiles;
+import com.epul.autolib.repositories.ClientRepository;
+import com.epul.autolib.utilitaires.Utils;
 import com.epul.autolib.utilitaires.Layout;
 import com.epul.autolib.utilitaires.Vues;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +20,23 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("")
 @RestController
 @CrossOrigin
-public class AuthentificationController {
+public class AuthentificationController extends BasicController<Client> {
 
-    private final UtilisateurRepository utilisateurRepository;
+    private final ClientRepository clientRepository;
 
     @Autowired
-    public AuthentificationController(UtilisateurRepository utilisateurRepository) {
-        this.utilisateurRepository = utilisateurRepository;
+    public AuthentificationController(ClientRepository clientRepository) {
+        super(Client.class);
+        this.clientRepository = clientRepository;
     }
 
     @RequestMapping("/login")
     public ModelAndView pageLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        retrieveError(request);
         return new Layout(Vues.LOGIN);
     }
 
-    @RequestMapping(value = "logout")
+    @RequestMapping("/logout")
     public ModelAndView pageLogout(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         session.removeAttribute("id");
@@ -51,29 +53,24 @@ public class AuthentificationController {
             String message ="";
             try {
 
-                Utilisateur unUtilisateur;
-                unUtilisateur = utilisateurRepository.getEntityUtilisateurByNomUtil(login);
-                if (unUtilisateur != null)
-                {
-                    try {
-                        String pwdmd5 = FonctionsUtiles.md5(pwd);
-                        if (unUtilisateur.getMotPasse().equals(pwdmd5)) {
-                            HttpSession session = request.getSession();
-                            session.setAttribute("id", unUtilisateur.getId());
-                            destinationPage = Vues.INDEX_RDR;
-                        } else {
-                            message = "mot de passe erroné";
-                            request.setAttribute("message", message);
-                            destinationPage = Vues.LOGIN;
-                        }
-                    } catch (NoSuchAlgorithmException e) {
-                        request.setAttribute("MesErreurs", e.getMessage());
-                        destinationPage = Vues.Erreur.ERREUR;
+                Client client = new Client();
+                client.setLogin("admin");
+                client.setPassword(Utils.md5("secret"));
+                client.setIdClient(100000000); // Pour pas s'embêter à créer un compte admin
+                try {
+                    String pwdmd5 = Utils.md5(pwd);
+                    if (client.getPassword().equals(pwdmd5)) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("id", client.getIdClient());
+                        destinationPage = Vues.INDEX_RDR;
+                    } else {
+                        message = "mot de passe erroné";
+                        request.setAttribute("message", message);
+                        destinationPage = Vues.LOGIN;
                     }
-                } else {
-                    message = "login erroné";
-                    request.setAttribute("message", message);
-                    destinationPage = Vues.LOGIN;
+                } catch (NoSuchAlgorithmException e) {
+                    request.setAttribute("MesErreurs", e.getMessage());
+                    destinationPage = Vues.Erreur.ERREUR;
                 }
             } catch (MonException e) {
                 request.setAttribute("MesErreurs", e.getMessage());
@@ -85,7 +82,7 @@ public class AuthentificationController {
 
     @RequestMapping("/inscription")
     public ModelAndView inscription(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new Layout(Vues.Erreur.E404);
+        return new Layout(Vues.Erreur.WIP);
     }
 
 }

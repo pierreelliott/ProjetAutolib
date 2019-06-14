@@ -25,7 +25,9 @@
 				}).addTo(macarte);
 
 				<c:forEach items="${stations}" var="item">
-					L.marker([${item.latitude}, ${item.longitude}]).addTo(macarte);
+					L.marker([${item.latitude}, ${item.longitude}]).addTo(macarte).on('click', function(e) {
+						window.location.href = "<c:url value="/stations/${item.id}"/>";
+					});
 				</c:forEach>
 			});
 		</script>

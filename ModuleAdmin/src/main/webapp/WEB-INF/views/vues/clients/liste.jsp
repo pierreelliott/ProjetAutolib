@@ -3,13 +3,13 @@
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<%--@elvariable id="listeStation" type="java.util.List<com.epul.autolib.bo.Station>"--%>
+<%--@elvariable id="listeClient" type="java.util.List<com.epul.autolib.bo.Client>"--%>
 
 <t:layout>
-	<jsp:attribute name="title">Autolib' - Liste des stations</jsp:attribute>
+	<jsp:attribute name="title">Autolib' - Liste des clients</jsp:attribute>
 	<jsp:body>
 		<div class="jumbotron text-center">
-			<h1>Listing des stations</h1>
+			<h1>Listing des clients</h1>
 		</div>
 
 		<div class="container">
@@ -21,44 +21,27 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Adresse</th>
-						<th>Coordonnées</th>
-						<th>Bornes</th>
-						<th>Réserver</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Date de naissance</th>
+						<th>login</th>
+						<th>Réservations</th>
 					</tr>
 				</thead>
 
 				<tbody>
-					<c:forEach items="${listeStation}" var="item">
+					<c:forEach items="${listeClient}" var="item">
 						<tr>
-							<td>${item.id}</td>
-							<td>${item.numero} ${item.adresse} ${item.ville}, ${item.codePostal}</td>
+							<td>${item.idClient}</td>
+							<td>${item.nom}</td>
+							<td>${item.prenom}</td>
+							<td>${item.dateNaissance}</td>
+							<td>${item.login}</td>
 							<td>
-								<a class="text-decoration-none" href="https://www.openstreetmap.org/#map=14/${item.latitude}/${item.longitude}"
-									target="_blank">
-									<i class="fas fa-street-view mr-1"></i>
-										(${item.coordonnees})
+								<a class="btn btn-info" href="<c:url value="/reservations/liste/${item.idClient}"/>">
+									<i class="fas fa-eye mr-1"></i>
+										Voir réservations
 								</a>
-							</td>
-							<td>
-								<div class="d-flex justify-content-between">
-									<div><i class="fas fa-car text-success" style="font-size: 2rem;"></i><span class="badge badge-pill badge-success position-relative" style="top:-18px;">${ item.nbVehiculesLibres }</span></div>
-									<div><i class="fas fa-car text-primary" style="font-size: 2rem;"></i><span class="badge badge-pill badge-primary position-relative" style="top:-18px;">${ item.nbVehiculesReserves }</span></div>
-									<div><i class="fas fa-car text-warning" style="font-size: 2rem;"></i><span class="badge badge-pill badge-warning position-relative" style="top:-18px;">${ item.nbVehiculesAbsents }</span></div>
-								</div>
-							</td>
-							<td>
-								<c:if test="${item.nbVehiculesLibres > 0}">
-									<a class="btn btn-success" href="<c:url value="/stations/${item.id}"/>"
-									   title="Réserver un véhicule">
-										<i class="far fa-calendar-check"></i>
-									</a>
-								</c:if>
-								<c:if test="${item.nbVehiculesLibres == 0}">
-									<button class="btn btn-success disabled" title="Aucun véhicule disponible !">
-										<i class="far fa-calendar-check"></i>
-									</button>
-								</c:if>
 							</td>
 						</tr>
 					</c:forEach>

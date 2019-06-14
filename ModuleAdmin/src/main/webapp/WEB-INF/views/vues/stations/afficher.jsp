@@ -1,46 +1,72 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<c:set var="showId" value="${param.showId}"/>
-<c:set var="validateButtonTitle" value="${param.validateButtonTitle}"/>
-<c:set var="backButtonURL" value="${param.backButtonURL}"/>
+<%--@elvariable id="station" type="com.epul.autolib.bo.Station"--%>
 
-<fieldset>
-    <legend></legend>
-    <div class="row">
-        <c:if test="${(adherent != null) and (showId == true)}">
-            <div class="col-6 form-group">
-                <label for="id_adherent" class="control-label">ID de l'adhérent : </label>
-                <input type="text" name="id" value="${adherent.id}" id="id_adherent" class="form-control" readonly>
+<t:layout>
+    <jsp:attribute name="title">Autolib' - Station n°${station.id}</jsp:attribute>
+    <jsp:body>
+        <div class="jumbotron text-center">
+            <h1>Station n°${station.id}</h1>
+        </div>
+
+        <div class="container">
+            <div class="row mb-3">
+                <a class="btn btn-secondary" href="<c:url value="/stations/carte"/>" role="button"><i class="fas fa-chevron-left mr-2"></i>Retour carte</a>
             </div>
-        </c:if>
 
-        <div class="col-6 form-group">
-            <label for="nom_adherent" class="control-label">Nom de l'adhérent : </label>
-            <input type="text" name="nom" value="${adherent.nom}" id="nom_adherent" class="form-control">
+            <p>Localisation : ${station.numero} ${station.adresse}, ${station.codePostal} ${station.ville}</p>
+            <p>Coordonnées GPS : ${station.coordonnees}</p>
+
+            <h2>Bornes</h2>
+            <table>
+                <c:forEach items="${station.bornes}" var="item">
+                    <tr>
+                        <c:choose>
+                            <c:when test="${item.vehicule != null and item.vehicule.disponibilite eq 'LIBRE'}">
+                                <td>
+                                    <i class="fas fa-car text-success fa-2x"></i>
+                                    ${item.vehicule.typeVehicule.typeVehicule} (${item.vehicule.etatBatterie}% batterie)
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-success" href="<c:url value="/reservations/nouveau/${item.vehicule.idVehicule}"/>"
+                                       title="Réserver un véhicule">
+                                        <i class="far fa-calendar-check"></i>
+                                        Réserver
+                                    </a>
+                                </td>
+                            </c:when>
+                            <c:when test="${item.vehicule != null and item.vehicule.disponibilite ne 'LIBRE'}">
+                                <i class="fas fa-car text-warning fa-2x"></i>
+                                <td>
+                                    Ce véhicule a été réservé par un utilisateur.
+                                </td>
+                                <td></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td>
+                                    <i class="fas fa-car text-danger fa-2x"></i>
+                                    Aucun véhicule libre sur cette borne
+                                </td>
+                                <td>
+                                    <c:if test="${sessionScope.id > 0}">
+                                        <a class="btn btn-primary" href="<c:url value="/vehicules/depot/${item.vehicule.idVehicule}"/>"
+                                           title="Réserver un véhicule">
+                                            <i class="far fa-calendar-check"></i>
+                                            Déposer
+                                        </a>
+                                    </c:if>
+
+                                </td>
+                            </c:otherwise>
+                        </c:choose>
+                    </tr>
+                </c:forEach>
+            </table>
+
         </div>
-
-        <div class="col-6 form-group">
-            <label for="prenom_adherent" class="control-label">Prénom de l'adhérent : </label>
-            <input type="text" name="prenom" value="${adherent.prenom}" id="prenom_adherent" class="form-control">
-        </div>
-
-        <div class="col-6 form-group">
-            <label for="ville_adherent" class="control-label">Ville de l'adhérent : </label>
-            <input type="text" name="ville" value="${adherent.ville}" id="ville_adherent" class="form-control">
-        </div>
-
-        <div class="col-12 form-group mt-3">
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-save mr-2"></i>
-                <c:out value="${validateButtonTitle}"/>
-            </button>
-
-            <a type="button" class="btn btn-outline-danger" href="${backButtonURL}">
-                <span class="fas fa-ban mr-2"></span>
-                Annuler
-            </a>
-        </div>
-    </div>
-</fieldset>
+    </jsp:body>
+</t:layout>
